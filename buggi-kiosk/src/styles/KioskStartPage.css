@@ -1,0 +1,224 @@
+/* 키오스크 첫 화면 전용 스타일 */
+
+.kiosk-start-root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 660px 고정 폭 프레임 (지금 쓰는 다른 페이지들과 느낌 맞춤) */
+.kiosk-start-frame {
+  position: relative;
+  width: 660px;
+  max-height: 900px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 뒤에서 천천히 돌아가는 원형 그라디언트 */
+.kiosk-start-orbit {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 180deg,
+    rgba(0, 78, 161, 0.15),
+    rgba(56, 189, 248, 0.08),
+    rgba(129, 140, 248, 0.18),
+    rgba(0, 78, 161, 0.15)
+  );
+  filter: blur(2px);
+  opacity: 0.9;
+  animation: kiosk-orbit-rotate 18s linear infinite;
+}
+
+/* 메인 카드 */
+.kiosk-start-card {
+  position: relative;
+  width: 100%;
+  border-radius: 28px;
+  padding: 2rem 2.2rem 1.6rem;
+  background: radial-gradient(circle at top left, #ffffff 0%, #f9fbff 40%, #eef2ff 100%);
+  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.20);
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* 카드 위쪽 은은한 하이라이트 */
+.kiosk-start-card::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.25), transparent 70%);
+  opacity: 0.7;
+}
+
+/* 로고 영역 */
+.kiosk-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.kiosk-logo-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #c47ac79c, #5b76c0c7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 26px rgba(58, 69, 95, 0.55);
+}
+
+.kiosk-logo-icon {
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.kiosk-logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.kiosk-logo-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #0f172a;
+}
+
+.kiosk-logo-sub {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* 메인 카피 */
+.kiosk-main-message {
+  margin-top: 0.6rem;
+}
+
+.kiosk-main-line1 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.kiosk-main-line2 {
+  margin-top: 0.1rem;
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #404858;
+}
+
+.kiosk-helper-text {
+  font-size: 0.95rem;
+  color: #404858;
+}
+
+/* 버튼 묶음 */
+.kiosk-button-row {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+/* 버튼 공통 */
+.kiosk-btn {
+  width: 100%;
+  border-radius: 18px;
+  padding: 0.9rem 1.2rem;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease,
+    color 0.15s ease;
+  text-align: left;
+}
+
+.kiosk-btn-main {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.kiosk-btn-sub {
+  font-size: 0.85rem;
+  color: inherit;
+  opacity: 0.85;
+}
+
+/* 로그인 버튼 */
+.kiosk-btn-primary {
+  background: linear-gradient(135deg, #5b76c0c7, #404858);
+  color: #ffffff;
+  box-shadow: 0 14px 32px rgba(37, 99, 235, 0.55);
+}
+
+.kiosk-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(37, 99, 235, 0.7);
+}
+
+/* 비로그인 버튼 */
+.kiosk-btn-secondary {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+}
+
+.kiosk-btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.12);
+  border-color: #004ea1;
+}
+
+/* 하단 힌트 */
+.kiosk-footer-hint {
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  color: #9ca3af;
+  text-align: right;
+}
+
+/* 배경 원 회전 애니메이션 */
+@keyframes kiosk-orbit-rotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.02);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* 좁은 화면 대응 (개발용) */
+@media (max-width: 768px) {
+  .kiosk-start-frame {
+    width: 100%;
+    padding: 1.5rem 1rem;
+  }
+
+  .kiosk-start-card {
+    padding: 1.6rem 1.5rem 1.3rem;
+  }
+}

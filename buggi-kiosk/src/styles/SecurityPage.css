@@ -1,0 +1,171 @@
+/* src/styles/SecurityAlertPage.css */
+
+/* 상단 타이틀 영역 */
+.security-header {
+  text-align: center;
+  margin: 1.5rem auto 0;
+}
+
+.security-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #b91c1c; /* 진한 레드 */
+}
+
+.security-header p {
+  margin-top: 0.5rem;
+  margin-bottom: 1.0rem;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+/* 결과 카드 섹션 */
+.security-result-section {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* 메인 카드 */
+.security-card {
+  width: 100%;
+  max-width: 720px;
+  padding: 2.5rem 2.5rem 2.75rem;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+/* 활성 상태 시 붉은 포커스 + 펄스 효과 */
+.security-card-active {
+  border-color: #ef4444;
+  animation: security-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes security-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px 15px rgba(239, 68, 68, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.2);
+  }
+}
+
+/* 아이콘 영역 */
+.security-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.security-icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 999px;
+  background: #fef2f2;
+  border: 3px solid #ef4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.security-icon {
+  font-size: 2.4rem;
+}
+
+/* 텍스트 */
+.security-main-text {
+  margin-top: 0.75rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.security-sub-text {
+  margin-top: 0.65rem;
+  font-size: 0.98rem;
+  color: #6b7280;
+}
+
+/* 버튼 영역 */
+.security-actions {
+  margin-top: 1.75rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.security-btn {
+  min-width: 140px;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+/* 취소 버튼 */
+.security-btn.cancel {
+  background: #f9fafb;
+  color: #374151;
+  border-color: #e5e7eb;
+}
+
+.security-btn.cancel:hover:not(:disabled) {
+  background: #ffffff;
+  border-color: #9ca3af;
+}
+
+/* 위험(호출) 버튼 */
+.security-btn.danger {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+  box-shadow: 0 10px 24px rgba(239, 68, 68, 0.4);
+}
+
+.security-btn.danger:hover:not(:disabled) {
+  background: #ffffff;
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+/* 중립 버튼 (처음으로) */
+.security-btn.neutral {
+  background: #111827;
+  color: #ffffff;
+  border-color: #111827;
+}
+
+.security-btn.neutral:hover:not(:disabled) {
+  background: #ffffff;
+  color: #111827;
+}
+
+/* 비활성 상태 */
+.security-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* 보안 호출 버튼 강조 (검색 버튼) */
+.security-call-button {
+  background: #ef4444;
+  border-color: #ef4444;
+}
+
+.security-call-button:hover {
+  background: #ffffff;
+  color: #ef4444;
+}

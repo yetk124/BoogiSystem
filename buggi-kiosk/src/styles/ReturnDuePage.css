@@ -1,0 +1,22 @@
+/* 상단 타이틀 영역 */
+.due-header {
+  text-align: center;
+  margin: 1.5rem auto 0;
+}
+
+.due-header h1 {
+  font-size: 1.5rem;  
+  font-weight: 700;
+  color: #004ea1;
+}
+
+.due-header p {
+  margin-top: 0.5rem;
+  margin-bottom: 1.0rem;
+  font-size: 1.0rem;
+  color: #6c757d;
+}
+
+/* 결과 카드 여백만 살짝 조절 */
+.due-result-card {
+}

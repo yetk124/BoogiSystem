@@ -1,0 +1,111 @@
+/* src/styles/CheckoutPage.css */
+
+/* 상단 타이틀 (글자 크기 다른 페이지랑 맞춤) */
+.checkout-header {
+  text-align: center;
+  margin: 1.5rem auto 0;
+}
+
+.checkout-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #004ea1;
+}
+
+.checkout-header p {
+  margin-top: 0.5rem;
+  margin-bottom: 1.0rem;
+  font-size: 1.0rem;
+  color: #6c757d;
+}
+
+/* 결과 카드 섹션 */
+.checkout-result-section {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* 퇴실 완료 카드 */
+.checkout-card {
+  width: 100%;
+  max-width: 700px;
+  padding: 2.5rem 2.5rem 2.75rem;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 은은한 하이라이트 효과 */
+.checkout-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at top, #e6f0ff, transparent 60%);
+  opacity: 0.9;
+  z-index: -1;
+}
+
+/* 체크 아이콘 영역 */
+.checkout-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.checkout-icon-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  background: #e6f4ff;
+  border: 3px solid #0b74ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout-icon {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0b74ff;
+}
+
+/* 메시지 텍스트 */
+.checkout-main-text {
+  margin-top: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1f2933;
+}
+
+.checkout-sub-text {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+/* 확인 버튼 */
+.checkout-ok-button {
+  margin-top: 1.75rem;
+  padding: 0.85rem 2.5rem;
+  border-radius: 999px;
+  border: none;
+  background: #004ea1;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 78, 161, 0.35);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease,
+    color 0.18s ease;
+}
+
+.checkout-ok-button:hover {
+  transform: translateY(-1px);
+  background: #ffffff;
+  color: #004ea1;
+  box-shadow: 0 12px 26px rgba(0, 78, 161, 0.4);
+}

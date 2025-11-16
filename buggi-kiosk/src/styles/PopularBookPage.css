@@ -1,0 +1,183 @@
+/* 상단 타이틀 영역 */
+.popular-header {
+  text-align: center;
+  margin: 1.5rem auto 0;
+}
+
+.popular-header h1 {
+  font-size: 1.5rem;  
+  font-weight: 700;
+  color: #004ea1;
+}
+
+.popular-header p {
+  margin-top: 0.5rem;
+  margin-bottom: 1.0rem;
+  font-size: 1.0rem;
+  color: #6c757d;
+}
+
+/* 검색바와 카드 사이 여백 조정 */
+.popular-search-panel {
+  margin-bottom: 2rem;
+}
+
+
+/* 카드 그리드 */
+.popular-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+/* 개별 카드 */
+.popular-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 1.8rem 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  color: #1f2933;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.popular-title {
+  margin-top: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.popular-author {
+  margin-top: 0.4rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* 카드 하단 버튼 영역 */
+.popular-actions {
+  margin-top: auto;
+  padding-top: 2rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* 버튼 공통 */
+.popular-actions button {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 18px;
+  padding: 0.75rem 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* 아웃라인 버튼 */
+.btn-outline {
+  border: 2px solid var(--primary-color);
+  background: #ffffff;
+  color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background: var(--primary-color);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* 기본 파란 버튼 */
+.btn-primary {
+  border: 2px solid var(--primary-color);
+  background: var(--primary-color);
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 78, 161, 0.3);
+}
+
+.btn-primary:hover {
+  background: #ffffff;
+  color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+
+
+/* swiper 코드 */
+/* 인기 도서 카드 */
+.popular-swiper {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding-bottom: 40px;
+}
+
+.popular-card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.popular-rank {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #004ea1;
+}
+
+.popular-title {
+  margin-top: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.popular-author {
+  margin-top: 0.5rem;
+  font-size: 1.3rem;
+  color: #6b7280;
+}
+
+.popular-actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-outline,
+.btn-primary {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border-radius: 18px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Swiper 전용 버튼 */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #32363a !important;
+  scale: 0.6;
+  font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+  background: #b1c8f0 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #004ea1 !important;
+}
+
+
+/* width가 좁아졌을 때 1열 또는 2열로 바꾸고 싶다면 */
+@media (max-width: 1024px) {
+  .popular-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .popular-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,92 @@
+.study-header {
+  max-width: 1100px;
+  margin: 1.5rem auto 0;
+}
+
+.study-header h1 {
+  font-size: 1.5rem;  
+  font-weight: 700;
+  color: #004ea1;
+}
+
+.study-header p {
+  margin-top: 0.5rem;
+  margin-bottom: 1.0rem;
+  font-size: 1.0rem;
+  color: #6c757d;
+}
+
+
+/* 조회된 결과 묶음 */
+.study-result-section {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2.0rem;
+  justify-content: center;
+}
+
+
+/* 잔여 카드 */
+.remain-card {
+  background: white;
+  padding: 3rem 3rem;   /* 🔥 기존 2rem에서 증가 → 전체적으로 아래로 내려옴 */
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;          /* 🔥 요소 사이 여백 증가 */
+  justify-content: center;
+}
+
+
+.remain-label {
+  font-size: 1.4rem;
+  color: #6c757d;
+}
+
+.remain-number {
+  font-size: 4.2rem;    /* 🔥 조금 더 크게 */
+  font-weight: 900;
+  color: #004ea1;
+}
+
+.remain-sub {
+  margin-top: 0.2rem;   /* 🔥 너무 좁지 않게 */
+  font-size: 1.1rem;
+  color: #67748b;
+}
+
+
+
+/* 원형 그래프 카드 */
+.circle-card {
+  background: white;
+  padding: 2rem 3rem;
+  border-radius: 24px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.circle-svg {
+  width: 240px;
+  height: 240px;
+}
+
+.circle-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  fill: #004ea1;
+}
+
+.circle-under-title {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+.circle-under-percent {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #004ea1;
+}
