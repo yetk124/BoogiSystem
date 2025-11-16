@@ -14,6 +14,13 @@ React 기반으로 개발된 **도서관 키오스크 시스템**입니다.
 
 ---
 
+### (Planned) Backend / LLM
+
+- On-device LLM 또는 서버 LLM과 **Function Calling(도구 호출)** 방식으로 연동
+- 각 기능은 `boogi_***_service` 형태의 “도서관 전용 함수”로 설계
+
+---
+
 ## 🛠 기술 스택
 - **Frontend**: React + TypeScript + Vite  
 - **Style**: Tailwind CSS  
