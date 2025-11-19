@@ -1,12 +1,11 @@
 // book 엔티티
 
 package com.buggi.backend.domain;
-
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "books")
+@Table(name = "hsel_data")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,15 +17,20 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 200)
+    @Column(name = "title", nullable = false, length = 200)
     private String title;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "author", length = 100)
     private String author;
 
-    @Column(length = 50)
-    private String locationCode; // "4층-자연과학-005" 같은 위치 코드
+    @Column(name = "location", length = 50)
+    private String location;
 
-    @Column
-    private int borrowCount; // 인기 도서용 (대출 횟수 등)
+    @Column(name="call_number", length = 255)
+    private String call_number;
+
+    @Column(name = "url", length = 500)
+    private String url;
+
+
 }
