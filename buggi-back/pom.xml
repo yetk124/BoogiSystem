@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.buggi</groupId>
-    <artifactId>backend</artifactId>
+    <artifactId>boogi-back</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>backend</name>
-    <description>backend</description>
+    <name>boogi-back</name>
+    <description>boogi-back</description>
     <url/>
     <licenses>
         <license/>
