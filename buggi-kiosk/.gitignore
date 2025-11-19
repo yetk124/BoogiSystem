@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+### mac
+.DS_Store
+db/.DS_Store

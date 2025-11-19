@@ -9,16 +9,18 @@ public class BookDtos {
             Long id,
             String title,
             String author,
-            String locationCode,
-            int borrowCount
+            String location,
+            String call_number,
+            String url
     ) {
         public static BookResponse from(Book book) {
             return new BookResponse(
                     book.getId(),
                     book.getTitle(),
                     book.getAuthor(),
-                    book.getLocationCode(),
-                    book.getBorrowCount()
+                    book.getLocation(),
+                    book.getCall_number(),
+                    book.getUrl()
             );
         }
     }
