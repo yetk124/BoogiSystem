@@ -18,33 +18,6 @@ USE `buggi`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `books`
---
-
-DROP TABLE IF EXISTS `books`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `books` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `author` varchar(100) NOT NULL,
-  `borrow_count` int DEFAULT NULL,
-  `location_code` varchar(50) DEFAULT NULL,
-  `title` varchar(200) NOT NULL,
-  `location` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `books`
---
-
-LOCK TABLES `books` WRITE;
-/*!40000 ALTER TABLE `books` DISABLE KEYS */;
-/*!40000 ALTER TABLE `books` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `calendar`
 --
 
@@ -126,6 +99,57 @@ INSERT INTO `loan` VALUES (1,2112345,'2024-09-03'),(2,2067890,'2024-10-03'),(3,2
 UNLOCK TABLES;
 
 --
+-- Table structure for table `mood`
+--
+
+DROP TABLE IF EXISTS `mood`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mood` (
+  `id` int NOT NULL,
+  `mood_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mood`
+--
+
+LOCK TABLES `mood` WRITE;
+/*!40000 ALTER TABLE `mood` DISABLE KEYS */;
+INSERT INTO `mood` VALUES (1,'위로 '),(2,'동기부여'),(3,'휴식');
+/*!40000 ALTER TABLE `mood` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `popular`
+--
+
+DROP TABLE IF EXISTS `popular`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `popular` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `author` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `call_number` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `popular`
+--
+
+LOCK TABLES `popular` WRITE;
+/*!40000 ALTER TABLE `popular` DISABLE KEYS */;
+INSERT INTO `popular` VALUES (1,'세계를 빛낸 사람들','게오르그 포프','인문자연과학자료실(5F)','990.3 ㅅ374 v.1'),(2,'체육교육','한국문교부','사회과학자료실(4F)','374.692 ㅎ247ㅊ'),(3,'마음가는대로','수산나 타마로','어문학자료실(3F)','883.7 ㅌ18');
+/*!40000 ALTER TABLE `popular` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -159,4 +183,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-11-19 18:35:20
+-- Dump completed on 2025-11-20 11:05:29
