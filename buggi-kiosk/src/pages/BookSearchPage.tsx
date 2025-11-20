@@ -14,7 +14,7 @@ const BookSearchPage: React.FC = () => {
   >("idle");
   const [result, setResult] = useState<string | null>(null); // 🔹 결과 상태
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     if (!query.trim()) {
       setResult(null);
       return;
@@ -29,12 +29,38 @@ const BookSearchPage: React.FC = () => {
     // const data = await res.json();
     // setResult(data.answer);
 
-    setTimeout(() => {
+    //setTimeout(() => {
       // 지금은 임시로 프론트에서만 문장 만들어줌 (데이터 연결 전 상태)
-      setResult(`"${query}" 에 대한 도서 위치 안내가 여기에 표시됩니다.`);
+    //  setResult(`"${query}" 에 대한 도서 위치 안내가 여기에 표시됩니다.`);
+    //  setStatus("speaking");
+    //  setTimeout(() => setStatus("idle"), 800);
+    //}, 800);
+
+    try {
+      const res = await fetch(
+          `http://localhost:8080/api/books/search?keyword=${encodeURIComponent(query)}`
+      );
+
+      if (!res.ok) throw new Error("서버 오류");
+
+      const data = await res.json();
+
+      if (data.length === 0) {
+        setResult(`"${query}"에 대한 검색 결과가 없습니다.`);
+      } else {
+        const first = data[0]; // 첫 번째 검색 결과 사용
+        setResult(
+            `"${first.title}" 은(는) ${first.location}에 있습니다. -> ${first.call_number}`
+        );
+      }
+
       setStatus("speaking");
       setTimeout(() => setStatus("idle"), 800);
-    }, 800);
+    } catch (error) {
+      console.error(error);
+      setResult("도서 검색 중 문제가 발생했습니다.");
+      setStatus("idle");
+    }
   };
 
   const handleMic = () => {

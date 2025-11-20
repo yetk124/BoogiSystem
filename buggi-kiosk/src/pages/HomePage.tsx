@@ -43,8 +43,8 @@ const features: Feature[] = [
   {
     key: "events",
     iconClass: "fas fa-calendar-check",
-    title: "행사 안내",
-    description: "다양한 행사와 이벤트 정보를 확인하세요",
+    title: "도서 추천",
+    description: "당신의 감정을 말해보세요",
     to: "/book-recommend",       // 예시: 행사/추천 페이지
   },
   {

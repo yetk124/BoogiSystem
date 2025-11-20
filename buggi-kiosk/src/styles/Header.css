@@ -81,6 +81,36 @@
   transform: translateY(-2px);
 }
 
+/* 로고 + 마이크 버튼 그룹 */
+.logo-with-mic {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* 헤더용 마이크 버튼 */
+.mic-btn-header {
+  background: white;
+  border: 2px solid #2422708a;
+  color: #2422708a;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.mic-btn-header:hover {
+  background: #2422708a;
+  color: white;
+  transform: translateY(-2px);
+}
+
+
 
 @media (max-width: 768px) {
   .header-content {
@@ -94,4 +124,6 @@
     justify-content: center;
     margin-bottom: 0.5rem;
   }
+
+
 }
