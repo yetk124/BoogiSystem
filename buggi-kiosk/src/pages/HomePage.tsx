@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 
 
+
 import "../styles/Homepage.css";
 import "../styles/Header.css";
 import "../styles/common.css";
@@ -94,6 +95,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </header> */}
+
       <Header />
 
       {/* 메인 컨텐츠 */}

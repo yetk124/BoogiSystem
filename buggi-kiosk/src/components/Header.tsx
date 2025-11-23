@@ -1,5 +1,7 @@
 // src/components/Header.tsx
 import { useLocation, useNavigate } from "react-router-dom";
+import MicButton from "../components/MicButton";  // 추가
+import { startStt } from "../utils/micControl";
 
 type HeaderProps = {
   onVoiceClick?: () => void;   // 녹음 시작/중지 이벤트
@@ -27,15 +29,21 @@ const Header = ({ onVoiceClick }: HeaderProps) => {
           {/* ===== 왼쪽 로고 + (홈일 때 마이크 버튼) ===== */}
           <div className="logo-with-mic">
             <div className="logo">
-              <i className="fas fa-book-open" />
+              <i className="fas fa-book-open"/>
               <span>BOOGI SYSTEM</span>
             </div>
 
             {/* 홈 상태일 때만 녹음 버튼 표시 */}
             {isHome && (
-                <button className="mic-btn-header" onClick={onVoiceClick}>
-                  <i className="fas fa-microphone" />
-                </button>
+                //<button className="mic-btn-header" onClick={onVoiceClick}>
+                //  <i className="fas fa-microphone" />
+                //</button>
+                <MicButton
+                    status="idle"
+                    onClick={startStt}
+                    label="음성 입력"
+                  />
+
             )}
           </div>
 
