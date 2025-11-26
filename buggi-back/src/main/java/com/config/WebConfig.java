@@ -19,6 +19,7 @@ public class WebConfig {
                 registry.addMapping("/api/**")
                         .allowedOrigins(
                                 "http://localhost:5173",   // Vite dev server
+                                "http://localhost:5174",
                                 "http://localhost:3000",   // 기타
                                 "http://키오스크IP:포트"      // 실제 키오스크 IP
                         )

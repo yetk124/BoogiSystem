@@ -1,5 +1,6 @@
 package com.buggi.backend.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -15,10 +16,11 @@ public class Mood {
     @Id
     private Integer id;
 
-    private String moodName;
+    @Column(name = "mood_Name")
+    private String mood_Name;
 
-    public Mood(Integer id, String moodName) {
+    public Mood(Integer id, String mood_Name) {
         this.id = id;
-        this.moodName = moodName;
+        this.mood_Name = mood_Name;
     }
 }

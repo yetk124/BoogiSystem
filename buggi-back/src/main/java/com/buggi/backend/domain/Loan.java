@@ -22,5 +22,5 @@ public class Loan {
     private Users user;
 
     @Column(name = "due_date", nullable = false)
-    private java.sql.Date dueDate;
+    private java.sql.Date due_Date;
 }
