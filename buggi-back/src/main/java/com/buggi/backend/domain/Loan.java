@@ -3,6 +3,8 @@ package com.buggi.backend.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "loan")
 @Getter
@@ -16,11 +18,17 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    // Users 테이블 참조 (student_id)
-    @ManyToOne
-    @JoinColumn(name = "student_id", referencedColumnName = "student_id", nullable = false)
-    private Users user;
+    @Column(name = "student_id")
+    private String studentId;
 
-    @Column(name = "due_date", nullable = false)
-    private java.sql.Date due_Date;
+    @Column(name = "student_name")
+    private String studentName;
+
+    @Column(name = "due_date")
+    private LocalDate dueDate;
+
+    @Column(name = "title")
+    private String title;
+
+
 }

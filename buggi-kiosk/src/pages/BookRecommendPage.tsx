@@ -59,32 +59,34 @@ const BookRecommendPage: React.FC = () => {
         {/* 입력 + 버튼 + 마이크 */}
         <section className="search-panel recommend-search-panel">
           <div className="search-box-card">
-            <div className="search-input-row">
-              <div className="search-input-wrapper">
-                <span className="search-input-icon">💬</span>
-                <input
-                  type="text"
-                  placeholder="예 : 너무 지쳐서 위로받고 싶어요"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  className="search-text-input"
-                />
+
+            <div className="recommend-button-row">
+              <div className="mood-button-wrapper">
+                <button type="button" onClick={handleSearch} className="mood-button">
+                  # 위로
+                </button>
+                <button type="button" onClick={handleSearch} className="mood-button">
+                  # 동기부여
+                </button>
+                <button type="button" onClick={handleSearch} className="mood-button">
+                  # 휴식
+                </button>
+
               </div>
 
-              <button type="button" onClick={handleSearch} className="search-button">
-                추천 받기
-              </button>
 
               <div className="mic-wrapper">
-                <MicButton status={status} onClick={handleMic} label="음성 입력" />
+                <MicButton status={status} onClick={handleMic} label="음성 입력"/>
               </div>
+
             </div>
-          </div>
+
+            </div>
         </section>
 
         {/* 결과가 있을 때만 표시 */}
         {result && (
-          <section className="recommend-result-section">
+            <section className="recommend-result-section">
             <div className="recommend-result-card">
               <h2 className="result-title">{result.title}</h2>
               <p className="result-author">저자: {result.author}</p>

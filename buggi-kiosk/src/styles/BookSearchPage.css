@@ -99,7 +99,7 @@
 
 /* 검색 버튼 */
 .search-button {
-  width: 100%;
+  width: 150px;
   height: 100%;
   border-radius: 18px;
   border: none;
@@ -160,6 +160,9 @@
   font-weight: 600;
   color: #6c757d;
 }
+.center {
+  text-align: center;
+}
 
 .result-main {
   margin-top: 1rem;
@@ -169,7 +172,48 @@
 }
 
 .result-sub {
-  margin-top: 0.5rem;
+  margin-top: 3rem;
   font-size: 1.0rem;
   color: #004ea1;
+}
+
+.search-item{
+  margin-top: 20px;
+  margin-bottom: 20px; /* 원하는 만큼 */
+  /*background: #d9dde8;*/
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+
+}
+
+.item-row {
+  display: flex;
+  flex-direction: column; /* 세로 정렬 */
+  align-items: center; /* 가운데 정렬 */
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.item-conent{
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.result-item-label {
+  display: inline-block;
+
+  background: #004ea1;
+  color: #ffffff;
+
+  font-size: 1.1rem;
+  font-weight: bold;
+
+  padding: 0.35rem 1.1rem;       /* 위/아래, 좌/우 패딩 */
+  border-radius: 999px;          /* pill 형태 */
+  margin-top: 0.5rem;
+  margin-bottom: 0.4rem;         /* 아래 간격 */
+  text-align: center;
 }

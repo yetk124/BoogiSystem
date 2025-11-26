@@ -20,3 +20,43 @@
 /* 결과 카드 여백만 살짝 조절 */
 .due-result-card {
 }
+
+.loan-item {
+  margin-top: 20px;
+  margin-bottom: 20px; /* 원하는 만큼 */
+  background: #d9dde8
+}
+
+.font-weight{
+  fontWeight: 700;
+}
+
+
+.loan-item-label{
+  display: inline-block;
+
+  background: #004ea1;
+  color: #ffffff;
+
+  font-size: 1.1rem;
+  font-weight: 700;
+
+  padding: 0.35rem 1.1rem;       /* 위/아래, 좌/우 패딩 */
+  border-radius: 999px;          /* pill 형태 */
+  margin-top: 0.5rem;
+  margin-bottom: 0.4rem;         /* 아래 간격 */
+  text-align: center;
+}
+
+.loan-item-content{
+  font-size: 1.3rem;
+  color: black;
+  margin-bottom: 0.7rem;
+}
+
+.title-weight{
+  font-weight: 500;
+}
+.date-weight{
+  font-weight: 500;
+}

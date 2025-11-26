@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 import "../styles/BookSearchPage.css";
+import "../styles/ReturnDuePage.css"
 import "../styles/common.css";
 
 import Header from "../components/Header";
@@ -13,6 +14,12 @@ const BookSearchPage: React.FC = () => {
     "idle" | "listening" | "thinking" | "speaking"
   >("idle");
   const [result, setResult] = useState<string | null>(null); // 🔹 결과 상태
+
+  const [bookData, setBookData] = useState<{
+    title: string;
+    location: string;
+    call_number: string;
+  } | null>(null);
 
   const handleSearch = async () => {
     if (!query.trim()) {
@@ -52,6 +59,11 @@ const BookSearchPage: React.FC = () => {
         setResult(
             `"${first.title}" 은(는) ${first.location}에 있습니다. -> ${first.call_number}`
         );
+        setBookData({
+          title: first.title,
+          location: first.location,
+          call_number: first.call_number,
+        });
       }
 
       setStatus("speaking");
@@ -114,14 +126,35 @@ const BookSearchPage: React.FC = () => {
 
           {/* 🔹 검색 결과 영역 - 결과가 있을 때만 렌더링 */}
           {result && (
-            <div className="search-result-card">
-              <p className="result-label">검색 결과</p>
-              <p className="result-main">{result}</p>
-              <p className="result-sub">
-                사서에게 길 안내를 요청할 수 있어요!
-              </p>
-            </div>
-          )}
+              <div className="search-result-card">
+                <p className="result-label">검색 결과</p>
+
+                {bookData && (
+                    <div className="search-item">
+
+                      <div className="item-row">
+                        <p className="result-item-label">제목</p>
+                        <p className="item-conent">{bookData.title}</p>
+                      </div>
+                      <div className="item-row">
+                        <p className="result-item-label">위치</p>
+                        <p className="item-conent">
+                          {bookData.location.replace(/\n/g, "")}
+                        </p>
+                      </div>
+
+                      <div className="item-row">
+                        <p className="result-item-label">청구기호</p>
+                        <p className="item-conent">{bookData.call_number}</p>
+                      </div>
+
+                    </div>
+                )}
+                      <p className="result-sub">
+                        사서에게 길 안내를 요청할 수 있어요!
+                      </p>
+                    </div>
+                )}
         </section>
       </main>
     </div>

@@ -1,21 +1,24 @@
+// LoanController.java
 package com.buggi.backend.controller;
 
+import com.buggi.backend.domain.Loan;
+import com.buggi.backend.dto.LoanResponse;
 import com.buggi.backend.service.LoanService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/loans")
+@RequestMapping("/api/loan")
+@RequiredArgsConstructor
+@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174"})
 public class LoanController {
 
-    //private final LoanService loanService;
+    private final LoanService loanService;
 
-    //@GetMapping
-    //public List<LoanResponse> getLoans(@RequestParam String studentId) {
-    //    return loanService.getLoansByStudentId(studentId);
-    //}
+    @GetMapping("/search")
+    public List<LoanResponse> searchByName(@RequestParam String name) {
+        return loanService.getLoansByName(name);
+    }
 }
-
-
-

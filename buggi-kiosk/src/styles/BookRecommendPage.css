@@ -55,3 +55,36 @@
   font-size: 1rem;
   color: #333;
 }
+
+.mood-button-wrapper{
+  display: flex;
+  gap: 0.6rem; /* 버튼 간격 */
+  justify-content: center; /* 가운데 정렬 */
+  flex-wrap: nowrap; /* 화면 좁을 때 자동 줄바꿈 */
+}
+
+.recommend-button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: nowrap; /* 👉 한 줄 유지 */
+  overflow-x: auto;  /* 👉 화면 좁을 때 스크롤 */
+  white-space: nowrap;
+}
+
+
+.mood-button {
+  width: 130px;
+  height: 100%;
+  border-radius: 18px;
+  border: none;
+  font-size: 1.0rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #004ea1;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
