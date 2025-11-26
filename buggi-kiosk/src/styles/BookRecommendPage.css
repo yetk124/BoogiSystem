@@ -98,3 +98,12 @@
   color: black;
   font-size: 1.3rem;
 }
+
+.comment{
+  margin: 40px;
+  //border: 1px solid #1a1a1a;
+  border-radius: 30px;
+  padding: 50px;
+  text-align: left;
+  background: #dae0f0;
+}
