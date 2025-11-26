@@ -1,18 +1,20 @@
 //(8) 캡스버스터콜 -  boogi7
 // src/pages/SecurityAlertPage.tsx
-// (축약된 버전) 캡스 호출 키오스크형 페이지
 
 import React, { useState } from "react";
 import "../styles/common.css";
 import "../styles/SecurityPage.css";
 
 import Header from "../components/Header";
+import { useNavigate } from "react-router-dom";
 
 type SecurityPhase = "idle" | "confirm" | "alerting" | "done";
 
 const SecurityPage: React.FC = () => {
   const [uiPhase, setUiPhase] = useState<SecurityPhase>("idle");
   const [result, setResult] = useState<string>("");
+
+  const navigate = useNavigate();
 
   const handleAlertClick = () => {
     setUiPhase("confirm");
@@ -88,7 +90,7 @@ const SecurityPage: React.FC = () => {
               {uiPhase === "done" && (
                 <button
                   className="security-btn neutral"
-                  onClick={() => setUiPhase("idle")}
+                  onClick={() => navigate("/home")}
                 >
                   처음으로
                 </button>
@@ -97,14 +99,16 @@ const SecurityPage: React.FC = () => {
             </div>
           </div>
         </section>
+
         <section className="security-extra-info">
           <p>⚠️ 주변에 위험 상황이 있다면 가까운 직원에게도 알려주세요.</p>
         </section>
-      {uiPhase === "alerting" && (
-        <section className="boogi-walk-section">
-          <img src="/src/img/한성부기.png" className="boogi-walk" />
-        </section>
-      )}
+
+        {uiPhase === "alerting" && (
+          <section className="boogi-walk-section">
+            <img src="/src/img/캡스부기.png" className="boogi-walk" />
+          </section>
+        )}
 
       </main>
     </div>

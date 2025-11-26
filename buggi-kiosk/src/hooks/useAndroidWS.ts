@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function useAndroidWS(androidUrl: string) {
     const wsRef = useRef<WebSocket | null>(null);
     const [connected, setConnected] = useState(false);
-    const navigate = useNavigate(); // 🔵 페이지 이동 기능 추가
+    const navigate = useNavigate();
 
     useEffect(() => {
         const ws = new WebSocket(androidUrl);
@@ -25,17 +25,23 @@ export default function useAndroidWS(androidUrl: string) {
             console.log("WS ERROR", e);
         };
 
-        // 🟦 Android → React 메시지 수신 처리
         ws.onmessage = (msg) => {
-            console.log("FROM ANDROID:", msg.data);
+            console.log("FROM ANDROID RAW:", msg.data);
 
             try {
+                // 🔥 JSON 아닌 메시지는 건너뛰기
+                if (typeof msg.data !== "string" || !msg.data.trim().startsWith("{")) {
+                    console.log("⚠ Non-JSON message ignored:", msg.data);
+                    return;
+                }
+
                 const data = JSON.parse(msg.data);
 
-                // intent 있으면 라우팅 실행
-                if (data.intent) {
+                // 🔥 maum0 ~ maum7 이 들어있는지 확인
+                if (typeof data.intent === "string") {
                     handleIntentNavigation(data.intent);
                 }
+
             } catch (e) {
                 console.log("JSON 파싱 오류:", e);
             }
@@ -44,41 +50,30 @@ export default function useAndroidWS(androidUrl: string) {
         return () => ws.close();
     }, [androidUrl]);
 
-    // 🟪 intent → 페이지 이동 매핑
+    // intent → route 매핑
+    const intentRouteMap: Record<string, string> = {
+        maum0: "/book-search",
+        maum1: "/popular-books",
+        maum2: "/interaction",
+        maum3: "/book-recommend",
+        maum4: "/return-due",
+        maum5: "/studyroom-status",
+        maum6: "/checkout",
+        maum7: "/security",
+    };
+
     const handleIntentNavigation = (intent: string) => {
         console.log("🔍 Intent Received:", intent);
 
-        switch (intent) {
-            case "buggi0":
-                navigate("/home");
-                break;
-            case "buggi1":
-                navigate("/book-search");
-                break;
-            case "buggi2":
-                navigate("/popular-books");
-                break;
-            case "buggi3":
-                navigate("/studyroom-status");
-                break;
-            case "buggi4":
-                navigate("/checkout");
-                break;
-            case "buggi5":
-                navigate("/security");
-                break;
-            case "buggi6":
-                navigate("/interaction");
-                break;
-            case "buggi7":
-                navigate("/book-recommend");
-                break;
-            default:
-                console.log("⚠ Unknown intent:", intent);
+        const route = intentRouteMap[intent];
+        if (route) {
+            console.log(`➡ navigating to ${route}`);
+            navigate(route, { replace: true });
+        } else {
+            console.log("⚠ Unknown intent:", intent);
         }
     };
 
-    // 🟩 WebSocket 전송 함수
     const send = (msg: any) => {
         if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
             wsRef.current.send(JSON.stringify(msg));

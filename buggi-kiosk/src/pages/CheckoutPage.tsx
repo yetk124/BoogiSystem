@@ -11,22 +11,34 @@ type CheckoutResponse = { message: string };
 
 async function requestCheckout(_query: string): Promise<CheckoutResponse> {
   return new Promise((resolve) => {
-    setTimeout(() => resolve({ message: "퇴실 처리가 완료되었습니다." }), 700);
+    setTimeout(() => resolve({ message: "퇴실 처리가 완료되었습니다." }), 1000);
   });
 }
 
 const CheckoutPage: React.FC = () => {
   const [query, setQuery] = useState("");
   const [result, setResult] = useState<CheckoutResponse | null>(null);
-  const [done, setDone] = useState(false); // 입력 UI 유지용
+  const [done, setDone] = useState(false);
+  const [error, setError] = useState(""); // ❗ 등록 회원이 아닌 경우 메시지 저장
+
+  // 등록된 회원 리스트
+  const allowedMembers = ["박정자", "고길동", "도우너"];
 
   const handleCheckout = async () => {
     if (!query.trim()) return;
 
+    // ❗ 입력값이 등록된 회원인지 검사
+    if (!allowedMembers.includes(query.trim())) {
+      setError("등록된 회원이 아닙니다.");
+      setResult(null);
+      setDone(false);
+      return;
+    }
+
+    // 정상 사용자 → 퇴실 처리 진행
+    setError("");
     const data = await requestCheckout(query);
     setResult(data);
-
-    // 입력칸은 유지하면서 아래에 결과만 뜸
     setDone(true);
 
     // 🔵 2초 후 홈으로 이동
@@ -40,18 +52,18 @@ const CheckoutPage: React.FC = () => {
       <Header />
 
       <main className="main-content">
+        
         {/* 상단 제목 */}
         <section className="checkout-header">
           <h1>🚪 퇴실 처리</h1>
           <p>집중열람실 이용 후, 간편하게 퇴실을 요청해 주세요.</p>
         </section>
 
-        {/* 입력 UI (결과가 떠도 사라지지 않음) */}
+        {/* 입력 UI */}
         <section className="search-panel">
           <div className="search-box-card">
             <div className="search-input-row checkout-row">
-              
-              {/* 입력칸 확장 */}
+
               <div className="search-input-wrapper checkout-input-expand">
                 <span className="search-input-icon">👤</span>
                 <input
@@ -63,12 +75,8 @@ const CheckoutPage: React.FC = () => {
                 />
               </div>
 
-              {/* 마이크는 숨기기만 하기 */}
-              <div className="mic-wrapper mic-hide-on-checkout">
-                {/* <MicButton /> */}
-              </div>
+              <div className="mic-wrapper mic-hide-on-checkout">{/* <MicButton /> */}</div>
 
-              {/* 제출 버튼 */}
               <button
                 type="button"
                 className="search-button checkout-submit-btn"
@@ -80,7 +88,18 @@ const CheckoutPage: React.FC = () => {
           </div>
         </section>
 
-        {/* 결과 박스는 입력칸 아래에 표시 */}
+        {/* ❗ 등록되지 않은 회원 에러 메시지 */}
+        {error && (
+          <section className="checkout-inline-result">
+            <div className="checkout-inline-box">
+              <div className="inline-check">⚠</div>
+              <p className="inline-main">{error}</p>
+              <p className="inline-sub">이름을 다시 확인해 주세요.</p>
+            </div>
+          </section>
+        )}
+
+        {/* 퇴실 처리 완료 UI */}
         {done && result && (
           <section className="checkout-inline-result">
             <div className="checkout-inline-box">
