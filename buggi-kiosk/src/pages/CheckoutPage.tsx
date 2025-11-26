@@ -5,7 +5,7 @@ import "../styles/BookSearchPage.css";
 import "../styles/CheckoutPage.css";
 
 import Header from "../components/Header";
-import MicButton from "../components/MicButton";
+// import MicButton from "../components/MicButton";
 
 type CheckoutResponse = { message: string };
 

@@ -109,6 +109,8 @@ DROP TABLE IF EXISTS `mood`;
 CREATE TABLE `mood` (
   `id` int NOT NULL,
   `mood_name` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `author` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -119,7 +121,7 @@ CREATE TABLE `mood` (
 
 LOCK TABLES `mood` WRITE;
 /*!40000 ALTER TABLE `mood` DISABLE KEYS */;
-INSERT INTO `mood` VALUES (1,'위로 '),(2,'동기부여'),(3,'휴식');
+INSERT INTO `mood` VALUES (1,'위로','소원','톤 텔레헨'),(2,'동기부여','최재천의 공부','최재천'),(3,'휴식','생각의 말','장석훈');
 /*!40000 ALTER TABLE `mood` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,4 +186,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-11-26 23:15:52
+-- Dump completed on 2025-11-27  7:12:29
