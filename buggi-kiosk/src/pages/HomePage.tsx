@@ -3,19 +3,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 
+import useAndroidWS from "../hooks/useAndroidWS";
+
 import "../styles/Homepage.css";
 import "../styles/Header.css";
 import "../styles/common.css";
 
-type Feature = {
-  key: string;
-  iconClass: string;
-  title: string;
-  description: string;
-  to: string;
-};
-
-const features: Feature[] = [
+const features = [
   {
     key: "search",
     iconClass: "fas fa-search",
@@ -75,34 +69,44 @@ const features: Feature[] = [
 ];
 
 const HomePage: React.FC = () => {
-  return (
-    <div className="buggi-root">
-      <Header />
+  const { send } = useAndroidWS("ws://192.168.0.2:9000");
 
-      <main className="main-content">
-        <section className="feature-grid">
-          {features.map((f) => (
-            <Link key={f.key} to={f.to} className="feature-card-link">
-              <div
-                className={`feature-card ${
-                  f.key === "security"
-                    ? "security-alert"
-                    : ["search", "events", "mybooks"].includes(f.key)
-                    ? "frequent"
-                    : "public"
-                }`}
-              >
-                <div className="feature-icon">
-                  <i className={f.iconClass} />
-                </div>
-                <h3>{f.title}</h3>
-                <p>{f.description}</p>
-              </div>
-            </Link>
-          ))}
-        </section>
-      </main>
-    </div>
+  // 마이크 버튼 → Android로 명령 전송
+  const handleMic = () => {
+    send({
+      type: "mic",
+      action: "start",
+    });
+  };
+
+  return (
+      <div className="buggi-root">
+        <Header onVoiceClick={handleMic} />
+
+        <main className="main-content">
+          <section className="feature-grid">
+            {features.map((f) => (
+                <Link key={f.key} to={f.to} className="feature-card-link">
+                  <div
+                      className={
+                        f.key === "security"
+                            ? "feature-card security-alert"
+                            : ["search", "events", "mybooks"].includes(f.key)
+                                ? "feature-card frequent"
+                                : "feature-card public"
+                      }
+                  >
+                    <div className="feature-icon">
+                      <i className={f.iconClass} />
+                    </div>
+                    <h3>{f.title}</h3>
+                    <p>{f.description}</p>
+                  </div>
+                </Link>
+            ))}
+          </section>
+        </main>
+      </div>
   );
 };
 

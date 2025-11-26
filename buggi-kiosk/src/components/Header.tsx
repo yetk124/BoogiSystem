@@ -11,19 +11,11 @@ const Header = ({ onVoiceClick }: HeaderProps) => {
 
   const isHome = location.pathname === "/home";
 
-  const handleRefresh = () => {
-    window.location.reload();
-  };
-
-  const handleHome = () => {
-    navigate("/home");
-  };
-
   return (
       <header className="header">
         <div className="header-content">
 
-          {/* 왼쪽 로고 영역 */}
+          {/* 로고 */}
           <div className="logo-with-mic">
             <div className="logo">
               <i className="fas fa-book-open" />
@@ -31,25 +23,24 @@ const Header = ({ onVoiceClick }: HeaderProps) => {
             </div>
           </div>
 
-          {/* 오른쪽 버튼 영역 */}
+          {/* 버튼 */}
           <div className="header-actions">
-            {isHome && (
+            {isHome ? (
                 <button className="mic-btn-header" onClick={onVoiceClick}>
                   <i className="fas fa-microphone" />
                 </button>
-            )}
-
-            {!isHome && (
+            ) : (
                 <>
-                  <button className="header-btn" onClick={handleRefresh}>
+                  <button className="header-btn" onClick={() => window.location.reload()}>
                     <i className="fas fa-rotate-right"></i>
                   </button>
-                  <button className="header-btn" onClick={handleHome}>
+                  <button className="header-btn" onClick={() => navigate("/home")}>
                     <i className="fas fa-home"></i>
                   </button>
                 </>
             )}
           </div>
+
         </div>
       </header>
   );
