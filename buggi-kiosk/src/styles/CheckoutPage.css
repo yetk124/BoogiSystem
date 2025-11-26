@@ -109,3 +109,210 @@
   color: #004ea1;
   box-shadow: 0 12px 26px rgba(0, 78, 161, 0.4);
 }
+
+/* 로딩 박스 */
+.checkout-loading {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+}
+
+/* 책 아이콘 회전 */
+.loading-book {
+  font-size: 48px;
+  color: #1f3c88;
+  animation: bookSpin 1.2s linear infinite;
+}
+.loading-book::before {
+  content: "\f518";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+@keyframes bookSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1f3c88;
+}
+
+/* 자동 이동 안내 */
+.auto-move-text {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+/* 🔵 CheckoutPage 전용 입력 정렬 고정 */
+.checkout-page .checkout-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* 🔵 마이크 wrapper 완전 제거 처리 */
+.checkout-page .mic-wrapper {
+  display: none !important;
+  width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* 🔵 입력칸이 가능한 모든 공간 차지하도록 확장 */
+.checkout-page .search-input-wrapper {
+  flex: 1 !important;
+}
+
+/* 🔵 퇴실 요청 버튼 오른쪽 고정 */
+.checkout-page .checkout-submit-btn {
+  flex-shrink: 0;
+  width: 140px;         /* 버튼 가로 길이 직접 설정 */
+  height: 68px;
+  /* border-radius: 12px; */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🔵 입력칸 아래에 뜨는 완료 박스 */
+.checkout-inline-result {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.checkout-inline-box {
+  background: #ffffff;
+  padding: 1.6rem 2rem;
+  border-radius: 20px;
+  max-width: 650px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.inline-check {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0a66c2;
+  margin-bottom: 0.5rem;
+}
+
+.inline-main {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1f2933;
+}
+
+.inline-sub {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  color: #6c757d;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); } }
+
+  /* ------------------------------
+   🔵 고급스러운 퇴실 완료 컨테이너
+   ------------------------------ */
+
+.checkout-inline-result {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  animation: fadeSlideUp 0.55s ease-out;
+}
+
+.checkout-inline-box {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  padding: 2rem 2.2rem;
+  border-radius: 24px;
+  max-width: 650px;
+  width: 100%;
+
+  text-align: center;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    0 20px 40px rgba(0, 80, 160, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+
+  animation: panelGlow 1.4s ease-out forwards;
+}
+
+/* 체크 아이콘 스타일 */
+.inline-check {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 0.8rem;
+
+  border-radius: 50%;
+  background: linear-gradient(145deg, #0a66c2, #0d73e7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+
+  box-shadow:
+    0 6px 12px rgba(0, 80, 160, 0.35),
+    inset 0 -3px 6px rgba(255, 255, 255, 0.25);
+
+  animation: iconPop 0.45s ease-out;
+}
+
+.inline-main {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1f2d3d;
+  margin-top: 0.4rem;
+}
+
+.inline-sub {
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+  color: #6c7a89;
+}
+
+/* ------------------------------
+   ✨ 애니메이션
+   ------------------------------ */
+
+/* 아이콘이 톡— 튀어나오는 효과 */
+@keyframes iconPop {
+  0% { transform: scale(0.3); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* 패널이 아래에서 위로 자연스럽게 슬라이드 인 */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 패널에 은은한 빛이 스르륵 퍼지는 효과 */
+@keyframes panelGlow {
+  0% { box-shadow: 0 0 0 rgba(0,0,0,0); }
+  100% { box-shadow: 0 8px 28px rgba(0,80,160,0.25); }
+}

@@ -334,3 +334,44 @@
     border: 2px solid #000;
   }
 }
+
+/* 보안 호출 카드 (빨간 강조) */
+.feature-card.security-alert {
+  border-left: 4px solid #dc3545;
+  /* background: rgba(255, 235, 238, 0.9); */
+}
+
+.feature-card.security-alert .feature-icon {
+  background: linear-gradient(135deg, #dc3545, #ff6b6b);
+}
+
+/* 자주 사용하는 기능 카드 (파란 강조) */
+.feature-card.frequent {
+  border-left: 4px solid #7053b2;
+  /* background: rgba(186, 162, 179, 0.9); */
+}
+
+.feature-card.frequent .feature-icon {
+  background: linear-gradient(135deg, #553c91, #8f72d3);
+}
+/* 🔮 부기 UI 스타일의 추천 배지 */
+.top-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  color: #5b4abf; /* 차분한 보라 */
+  background: rgba(232, 229, 255, 0.8); /* 부드러운 라벤더톤 */
+  border: 1px solid rgba(130, 122, 200, 0.25);
+
+  border-radius: 10px;
+  backdrop-filter: blur(2px);
+
+  box-shadow: 0 2px 6px rgba(90, 70, 170, 0.12);
+
+  pointer-events: none;
+}
