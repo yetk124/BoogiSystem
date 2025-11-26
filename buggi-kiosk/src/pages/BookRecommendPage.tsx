@@ -15,29 +15,27 @@ const BookRecommendPage: React.FC = () => {
   >("idle");
   const [result, setResult] = useState<any | null>(null); // 결과 (나중에 API 연결)
 
-  const handleSearch = () => {
-    if (!query.trim()) {
-      setResult(null);
-      return;
-    }
+  const handleSearch = async (mood: string) => {
 
     setStatus("thinking");
     setResult(null);
 
-    // 🔥 TODO: 후에 여기서 API 호출
-    // fetch("/api/recommend", { method:"POST", body: JSON.stringify({ query }) })
+    try {
+      const res = await fetch(`http://localhost:8080/api/mood/${mood}`);
+      const data = await res.json();
 
-    setTimeout(() => {
-      // 임시로 아무 결과도 넣지 않음 (API 연결 전)
       setResult({
-        title: "추천 도서 제목(임시)",
-        author: "저자명",
-        message: "AI 추천 메시지가 여기에 표시됩니다.",
+        title: data.title,
+        author: data.author,
+        message: `${mood}에 어울리는 책을 추천해드려요!`,
       });
 
       setStatus("speaking");
       setTimeout(() => setStatus("idle"), 700);
-    }, 700);
+    } catch (error) {
+      console.error(error);
+      setStatus("idle");
+    }
   };
 
   const handleMic = () => {
@@ -62,13 +60,13 @@ const BookRecommendPage: React.FC = () => {
 
             <div className="recommend-button-row">
               <div className="mood-button-wrapper">
-                <button type="button" onClick={handleSearch} className="mood-button">
+                <button type="button" onClick={() => handleSearch("위로")} className="mood-button">
                   # 위로
                 </button>
-                <button type="button" onClick={handleSearch} className="mood-button">
+                <button type="button" onClick={() => handleSearch("동기부여")} className="mood-button">
                   # 동기부여
                 </button>
-                <button type="button" onClick={handleSearch} className="mood-button">
+                <button type="button" onClick={() => handleSearch("휴식")} className="mood-button">
                   # 휴식
                 </button>
 
@@ -88,8 +86,11 @@ const BookRecommendPage: React.FC = () => {
         {result && (
             <section className="recommend-result-section">
             <div className="recommend-result-card">
-              <h2 className="result-title">{result.title}</h2>
-              <p className="result-author">저자: {result.author}</p>
+              <div className="result-box">
+                <span className="result-author">{result.author} </span>
+                저자의 <br/>
+                <span className="result-title">{result.title}</span> 추천드립니다
+              </div>
               <p className="result-message">{result.message}</p>
             </div>
           </section>

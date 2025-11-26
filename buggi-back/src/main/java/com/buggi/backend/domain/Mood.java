@@ -17,10 +17,16 @@ public class Mood {
     private Integer id;
 
     @Column(name = "mood_Name")
-    private String mood_Name;
+    private String moodName;
 
-    public Mood(Integer id, String mood_Name) {
+    @Column(name= "title")
+    private String title;
+
+    @Column(name="author")
+    private String author;
+
+    public Mood(Integer id, String moodName) {
         this.id = id;
-        this.mood_Name = mood_Name;
+        this.moodName = moodName;
     }
 }

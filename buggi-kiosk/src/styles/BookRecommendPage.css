@@ -41,13 +41,15 @@
 .result-title {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #111;
+  color: #00448f;
+
 }
 
 .result-author {
   margin-top: 0.5rem;
-  font-size: 1.1rem;
-  color: #555;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #001377;
 }
 
 .result-message {
@@ -87,4 +89,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.result-box{
+  padding: 50px;
+  border: 1px solid black;
+  border-radius: 30px;
+  color: black;
+  font-size: 1.3rem;
 }
