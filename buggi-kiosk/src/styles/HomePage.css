@@ -51,6 +51,47 @@
   background: white;
 }
 
+.stop-record-btn {
+  position: fixed;
+  left: 850px;
+  top: 16px;
+
+  width: 55px;
+  height: 55px;
+  aspect-ratio: 1 / 1;
+
+  background-color: #ff3b30; /* 빨간 원 */
+  border-radius: 50%;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 !important;
+  box-sizing: border-box;
+
+  cursor: pointer;
+  z-index: 999;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* STOP 정사각형 아이콘 */
+.stop-icon {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 4px; /* 살짝 둥근 네모 */
+}
+
+
+.stop-record-btn:hover {
+  background-color: #e13229;
+  transform: scale(1.05);
+  transition: 0.1s ease-in-out;
+}
+
 .search-input:focus {
   outline: none;
   border-color: var(--primary-color);
