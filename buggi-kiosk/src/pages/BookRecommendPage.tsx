@@ -11,7 +11,7 @@ import MicButton from "../components/MicButton";
 const BookRecommendPage: React.FC = () => {
   const [query, setQuery] = useState("");      // 사용자가 입력한 문장
   const [status, setStatus] = useState<
-    "idle" | "listening" | "thinking" | "speaking"
+      "idle" | "listening" | "thinking" | "speaking"
   >("idle");
   const [result, setResult] = useState<any | null>(null); // 결과 (나중에 API 연결)
   const [mood, setMood] = useState("");
@@ -22,9 +22,9 @@ const BookRecommendPage: React.FC = () => {
   const bookDescriptions: Record<string, { description: string;
     forWho: string[];
     reason: string; }> = {
-    "소원": {
+    "고슴도치의 소원": {
       description:
-          "「소원」은 네덜란드 작가 톤 텔레헨이 들려주는 짧고 따뜻한 이야기 모음집\n동물들의 대화를 통해 상처와 위로, 용기와 관계를 부드럽게 어루만지는 감성 에세이 같은 동화",
+          "「고슴도치의 소원」은 네덜란드 작가 톤 텔레헨이 들려주는 짧고 따뜻한 이야기 모음집\n동물들의 대화를 통해 상처와 위로, 용기와 관계를 부드럽게 어루만지는 감성 에세이 같은 동화",
       forWho: [
         "지친 마음을 위로받고 싶으신 분",
         "따뜻한 문장으로 힐링하고 싶으신 분",
@@ -93,98 +93,98 @@ const BookRecommendPage: React.FC = () => {
   };
 
   return (
-    <div className="buggi-root">
-      <Header />
+      <div className="buggi-root">
+        <Header />
 
-      <main className="main-content">
-        {/* 상단 안내 */}
-        <section className="recommend-header">
-          <h1>📚 감정 기반 도서 추천</h1>
-          <p>지금의 감정을 말하거나 입력하면, AI가 어울리는 책을 추천해드려요.</p>
-        </section>
+        <main className="main-content">
+          {/* 상단 안내 */}
+          <section className="recommend-header">
+            <h1>📚 감정 기반 도서 추천</h1>
+            <p>지금의 감정을 말하거나 입력하면, AI가 어울리는 책을 추천해드려요.</p>
+          </section>
 
-        {/* 입력 + 버튼 + 마이크 */}
-        <section className="search-panel recommend-search-panel">
-          <div className="search-box-card">
+          {/* 입력 + 버튼 + 마이크 */}
+          <section className="search-panel recommend-search-panel">
+            <div className="search-box-card">
 
-            <div className="recommend-button-row">
-              <div className="mood-button-wrapper">
-                <button type="button" onClick={() => handleSearch("위로")} className="mood-button">
-                  # 위로
-                </button>
-                <button type="button" onClick={() => handleSearch("동기부여")} className="mood-button">
-                  # 동기부여
-                </button>
-                <button type="button" onClick={() => handleSearch("휴식")} className="mood-button">
-                  # 휴식
-                </button>
+              <div className="recommend-button-row">
+                <div className="mood-button-wrapper">
+                  <button type="button" onClick={() => handleSearch("위로")} className="mood-button">
+                    # 위로
+                  </button>
+                  <button type="button" onClick={() => handleSearch("동기부여")} className="mood-button">
+                    # 동기부여
+                  </button>
+                  <button type="button" onClick={() => handleSearch("휴식")} className="mood-button">
+                    # 휴식
+                  </button>
 
-              </div>
+                </div>
 
 
-              <div className="mic-wrapper">
-                <MicButton status={status} onClick={handleMic} label="음성 입력"/>
-              </div>
-
-            </div>
-
-            </div>
-        </section>
-
-        {/* 결과가 있을 때만 표시 */}
-        {result && (
-            <section className="recommend-result-section">
-
-              <div className="recommend-result-card">
-                <p className="result-message">{result.message}</p><br/><br/>
-
-                {/*<p># {mood}</p>*/}
-
-                <span className="result-author">{result.author} </span>
-                저자의 <br/>
-                <span className="result-title">{result.title}</span> 추천드립니다
-
-                <div className="comment">
-                  {/* 소개 */}
-                  {result.description && (
-                      <p className="result-description">
-                        {result.description.split("\n").map((line, idx) => (
-                            <div key={idx}>{line}</div>
-                        ))}
-                      </p>
-                  )}
-
-                  {/* 이런 사람에게 추천 */}
-                  {result.forWho && result.forWho.length > 0 && (
-                      <div className="result-forwho">
-                        <br/>
-                        <strong>이런 분께 추천드립니다</strong>
-                        <ul>
-                          {result.forWho.map((item: string, idx: number) => (
-                              <li key={idx}>{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                  )}
-
-                  {/* 감정 추천 이유 */}
-                  <br/>
-                  {result.reason && (
-                      <p className="result-reason">
-                        {result.reason.split("\n").map((line, idx) => (
-                            <div key={idx}>{line}</div>
-                        ))}
-                      </p>
-                  )}
+                <div className="mic-wrapper">
+                  <MicButton status={status} onClick={handleMic} label="음성 입력"/>
                 </div>
 
               </div>
-            </section>
-        )}
 
-        {/* 결과가 없을 때는 아무것도 안보임 */}
-      </main>
-    </div>
+            </div>
+          </section>
+
+          {/* 결과가 있을 때만 표시 */}
+          {result && (
+              <section className="recommend-result-section">
+
+                <div className="recommend-result-card">
+                  <p className="result-message">{result.message}</p><br/><br/>
+
+                  {/*<p># {mood}</p>*/}
+
+                  <span className="result-author">{result.author} </span>
+                  저자의 <br/>
+                  <span className="result-title">{result.title}</span> 추천드립니다
+
+                  <div className="comment">
+                    {/* 소개 */}
+                    {result.description && (
+                        <p className="result-description">
+                          {result.description.split("\n").map((line, idx) => (
+                              <div key={idx}>{line}</div>
+                          ))}
+                        </p>
+                    )}
+
+                    {/* 이런 사람에게 추천 */}
+                    {result.forWho && result.forWho.length > 0 && (
+                        <div className="result-forwho">
+                          <br/>
+                          <strong>이런 분께 추천드립니다</strong>
+                          <ul>
+                            {result.forWho.map((item: string, idx: number) => (
+                                <li key={idx}>{item}</li>
+                            ))}
+                          </ul>
+                        </div>
+                    )}
+
+                    {/* 감정 추천 이유 */}
+                    <br/>
+                    {result.reason && (
+                        <p className="result-reason">
+                          {result.reason.split("\n").map((line, idx) => (
+                              <div key={idx}>{line}</div>
+                          ))}
+                        </p>
+                    )}
+                  </div>
+
+                </div>
+              </section>
+          )}
+
+          {/* 결과가 없을 때는 아무것도 안보임 */}
+        </main>
+      </div>
   );
 };
 

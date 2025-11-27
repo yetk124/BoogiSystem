@@ -1,15 +1,15 @@
-CREATE DATABASE  IF NOT EXISTS `buggi` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+CREATE DATABASE  IF NOT EXISTS `buggi` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `buggi`;
--- MySQL dump 10.13  Distrib 8.0.13, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.41, for macos15 (arm64)
 --
--- Host: localhost    Database: buggi
+-- Host: 127.0.0.1    Database: buggi
 -- ------------------------------------------------------
--- Server version	8.0.13
+-- Server version	8.4.4
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
- SET NAMES utf8 ;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -23,9 +23,9 @@ USE `buggi`;
 
 DROP TABLE IF EXISTS `calendar`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `calendar` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `is_closed` tinyint(1) NOT NULL,
   `reason` varchar(50) DEFAULT NULL,
@@ -49,9 +49,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `hsel_data`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `hsel_data` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` bigint NOT NULL AUTO_INCREMENT,
   `title` varchar(200) NOT NULL,
   `author` varchar(100) NOT NULL,
   `location` varchar(50) DEFAULT NULL,
@@ -77,9 +77,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `loan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `loan` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `student_id` varchar(255) DEFAULT NULL,
   `student_name` varchar(255) DEFAULT NULL,
   `due_date` date DEFAULT NULL,
@@ -105,9 +105,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `mood`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `mood` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `mood_name` varchar(255) DEFAULT NULL,
   `author` varchar(255) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
@@ -121,7 +121,7 @@ CREATE TABLE `mood` (
 
 LOCK TABLES `mood` WRITE;
 /*!40000 ALTER TABLE `mood` DISABLE KEYS */;
-INSERT INTO `mood` VALUES (1,'위로',NULL,NULL),(2,'동기부여',NULL,NULL),(3,'휴식',NULL,NULL);
+INSERT INTO `mood` VALUES (1,'위로','톤 텔레헨','고슴도치의 소원'),(2,'동기부여','최재천','최재천의 공부'),(3,'휴식','장석훈','생각의 말');
 /*!40000 ALTER TABLE `mood` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,9 +131,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `popular`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `popular` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` bigint NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `author` varchar(255) DEFAULT NULL,
   `location` varchar(255) DEFAULT NULL,
@@ -158,9 +158,9 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `student_id` int(11) NOT NULL,
+  `student_id` int NOT NULL,
   `student_name` varchar(50) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`student_id`)
@@ -186,4 +186,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-11-27  8:44:07
+-- Dump completed on 2025-11-27  9:08:14
