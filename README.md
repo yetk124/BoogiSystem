@@ -46,13 +46,13 @@ React · Spring Boot · MySQL · Android On-Device LLM 기반
 
 ## 📂 프로젝트 구조
 
-BoogiSystem/
-├── buggi-kiosk/ # React Frontend <br>
-├── buggi-back/ # Spring Boot Backend
-├── db/ # MySQL Docker 설정
-├── README.md
-└── docker-compose.yml
-
+BoogiSystem/ <br/>
+├── buggi-kiosk/ # React Frontend <br/>
+├── buggi-back/ # Spring Boot Backend <br/>
+├── db/ # MySQL Docker 설정 <br/>
+├── README.md <br/>
+└── docker-compose.yml <br/>
+ 
 ---
 
 ## 🤖 AI 구성 (마음AI 제공 모델)
