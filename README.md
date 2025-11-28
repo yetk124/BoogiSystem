@@ -5,12 +5,37 @@ React · Spring Boot · MySQL · Android On-Device LLM 기반
 
 ---
 
-## 👨‍💻 Team Members
+## 👥 Team Members
 
-- **원예은** — FRONT / BACK — [GitHub](https://github.com/uyetk124)
-- **장세미** — FRONT / BACK — [GitHub](https://github.com/ssem-i)
-- **노하은** — 기획 / LLM구조 — [GitHub](https://github.com/ryudia)
-- **이찬희** — 온디바이스 모델 고도화 — [GitHub](https://github.com/can6563)
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/yetk124.png" width="100"/><br/>
+      <b>원예은</b><br/>
+      FRONT / BACK<br/>
+      <a href="https://github.com/yetk124">GitHub</a>
+    </td>
+    <td align="center">
+      <img src="https://github.com/ssem-i.png" width="100"/><br/>
+      <b>장세미</b><br/>
+      FRONT / BACK<br/>
+      <a href="https://github.com/ssem-i">GitHub</a>
+    </td>
+    <td align="center">
+      <img src="https://github.com/ryudia.png" width="100"/><br/>
+      <b>노하은</b><br/>
+      기획 / LLM 구조<br/>
+      <a href="https://github.com/ryudia">GitHub</a>
+    </td>
+    <td align="center">
+      <img src="https://github.com/can6563.png" width="100"/><br/>
+      <b>이찬희</b><br/>
+      온디바이스 모델 고도화<br/>
+      <a href="https://github.com/can6563">GitHub</a>
+    </td>
+  </tr>
+</table>
+
 
 ---
 
