@@ -65,3 +65,22 @@ BoogiSystem/
 - Docker MySQL 연동
 
 ## 🗄 Database (Docker MySQL)
+| 구성 | 포트 |
+|------|------|
+| MySQL(Docker) | **3307** |
+| Spring Boot | **8080** |
+| React(Vite) | **5173** |
+
+## 실행방법
+
+### Frontend
+```bash
+cd buggi-kiosk
+npm install
+npm run dev
+```
+
+### Backend
+cd buggi-back
+./mvnw spring-boot:run
+
