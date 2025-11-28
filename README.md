@@ -6,7 +6,7 @@ React · Spring Boot · MySQL · Android On-Device LLM 기반
 ---
 
 ## 🎬 시연 영상 & 스크린샷
-(여기에 GIF/이미지 삽입)
+![KakaoTalk_20251128_120814432](https://github.com/user-attachments/assets/ef0831b1-9b98-4e29-b0f1-697c2623fc07)
 
 ---
 
@@ -81,6 +81,7 @@ npm run dev
 ```
 
 ### Backend
+```bash
 cd buggi-back
 ./mvnw spring-boot:run
-
+```
