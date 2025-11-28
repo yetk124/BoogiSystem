@@ -19,9 +19,12 @@ const BookRecommendPage: React.FC = () => {
 
 
   // title 기준으로 책 소개를 매핑하는 객체
-  const bookDescriptions: Record<string, { description: string;
+  const bookDescriptions: Record<string, {
+    description: string;
     forWho: string[];
-    reason: string; }> = {
+    reason: string;
+    imgSrc: string;
+  }> = {
     "고슴도치의 소원": {
       description:
           "「고슴도치의 소원」은 네덜란드 작가 톤 텔레헨이 들려주는 짧고 따뜻한 이야기 모음집\n동물들의 대화를 통해 상처와 위로, 용기와 관계를 부드럽게 어루만지는 감성 에세이 같은 동화",
@@ -32,7 +35,7 @@ const BookRecommendPage: React.FC = () => {
       ],
       reason:
           "잔잔한 위로와 공감이 필요한 순간에 잘 어울립니다.\n짧은 이야기 속 동물들의 말이 마음을 다정하게 어루만져 드립니다.",
-
+      imgSrc: "/src/img/고슴도치의소원.jpeg"
     },
     "최재천의 공부": {
       description:
@@ -44,7 +47,7 @@ const BookRecommendPage: React.FC = () => {
       ],
       reason:
           "공부가 부담스럽고 힘들게 느껴질 때 잘 어울립니다.\n‘왜 배우는가’를 다시 떠올리게 하여 꾸준함의 에너지를 드립니다.",
-
+      imgSrc: "/src/img/최재천의공부.jpeg"
     },
     "생각의 말": {
       description:
@@ -56,7 +59,7 @@ const BookRecommendPage: React.FC = () => {
       ],
       reason:
           "마음을 차분하게 가라앉히고 싶을 때 어울립니다.\n짧고 깊은 문장들이 하루의 작은 ‘마음 쉼표’가 되어 드립니다.",
-
+      imgSrc: "/src/img/생각의말.png"
     },
   };
 
@@ -76,6 +79,7 @@ const BookRecommendPage: React.FC = () => {
         description: bookDescriptions[data.title]?.description || "",
         forWho: bookDescriptions[data.title]?.forWho || [],
         reason: bookDescriptions[data.title]?.reason || "",
+        imgSrc: bookDescriptions[data.title]?.imgSrc || "",
         message: `${mood}에 어울리는 책`,
       });
 
@@ -138,18 +142,27 @@ const BookRecommendPage: React.FC = () => {
                 <div className="recommend-result-card">
                   <p className="result-message">{result.message}</p><br/><br/>
 
-                  {/*<p># {mood}</p>*/}
+                  <div className="result-header-box">
+                    <img
+                      src={result.imgSrc}
+                      alt="no-result mascot"
+                      className="no-result-icon-img"
+                    />
+                  <div>
 
-                  <span className="result-author">{result.author} </span>
-                  저자의 <br/>
-                  <span className="result-title">{result.title}</span> 추천드립니다
+                    <span className="result-author">{result.author} </span>
+                    저자의 <br/>
+                    <span className="result-title">{result.title}</span>
+                  </div>
+
+                  </div>
 
                   <div className="comment">
                     {/* 소개 */}
                     {result.description && (
                         <p className="result-description">
                           {result.description.split("\n").map((line, idx) => (
-                              <div key={idx}>{line}</div>
+                              <p key={idx}>{line}</p>
                           ))}
                         </p>
                     )}
@@ -172,7 +185,7 @@ const BookRecommendPage: React.FC = () => {
                     {result.reason && (
                         <p className="result-reason">
                           {result.reason.split("\n").map((line, idx) => (
-                              <div key={idx}>{line}</div>
+                              <p key={idx}>{line}</p>
                           ))}
                         </p>
                     )}
