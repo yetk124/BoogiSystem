@@ -5,6 +5,15 @@ React · Spring Boot · MySQL · Android On-Device LLM 기반
 
 ---
 
+## 👨‍💻 Team Members
+
+- **원예은** — FRONT / BACK — [GitHub](https://github.com/uyetk124)
+- **장세미** — FRONT / BACK — [GitHub](https://github.com/ssem-i)
+- **노하은** — 기획 / LLM구조 — [GitHub](https://github.com/ryudia)
+- **이찬희** — 온디바이스 모델 고도화 — [GitHub](https://github.com/can6563)
+
+---
+
 ## 🎬 시연 영상 & 스크린샷
 ![KakaoTalk_20251128_120814432](https://github.com/user-attachments/assets/ef0831b1-9b98-4e29-b0f1-697c2623fc07)
 
