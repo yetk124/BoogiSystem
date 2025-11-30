@@ -63,6 +63,7 @@ const StudyRoomStatusPage: React.FC = () => {
           <section className="checking-section">
             <div className="loading-book"></div>
             <p className="checking-text">좌석 정보를 불러오는 중입니다...</p>
+              <p className="auto-move-text">약 3초 정도 소요됩니다.</p>
           </section>
         )}
 

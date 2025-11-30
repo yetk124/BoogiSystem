@@ -79,35 +79,59 @@ const HomePage: React.FC = () => {
     });
   };
 
-  return (
-      <div className="buggi-root">
-        <Header onVoiceClick={handleMic} />
+ return (
+  <div className="buggi-root">
+    <Header onVoiceClick={handleMic} />
 
-        <main className="main-content">
-          <section className="feature-grid">
-            {features.map((f) => (
-                <Link key={f.key} to={f.to} className="feature-card-link">
-                  <div
-                      className={
-                        f.key === "security"
-                            ? "feature-card security-alert"
-                            : ["search", "events", "mybooks"].includes(f.key)
-                                ? "feature-card frequent"
-                                : "feature-card public"
-                      }
-                  >
-                    <div className="feature-icon">
-                      <i className={f.iconClass} />
-                    </div>
-                    <h3>{f.title}</h3>
-                    <p>{f.description}</p>
-                  </div>
-                </Link>
-            ))}
-          </section>
-        </main>
-      </div>
-  );
+    <main className="main-content">
+      <section className="feature-grid">
+        {features.map((f) => (
+          <Link key={f.key} to={f.to} className="feature-card-link">
+            <div
+              className={
+                f.key === "security"
+                  ? "feature-card security-alert"
+                  : ["search", "events", "mybooks"].includes(f.key)
+                  ? "feature-card frequent"
+                  : "feature-card public"
+              }
+            >
+              <div className="feature-icon">
+                <i className={f.iconClass} />
+              </div>
+              <h3>{f.title}</h3>
+              <p>{f.description}</p>
+            </div>
+          </Link>
+        ))}
+
+      </section>
+      
+         {/* 🔽 AI 안내카드 (그리드 안으로 이동!) */}
+ <section className="bottom-info">
+  
+  <div className="info-row">
+    <i className="fas fa-bullhorn"></i>
+    <span>2025년 1월 15일 정기 점검으로 14:00~16:00 휴관 예정</span>
+  </div>
+
+  <div className="info-row">
+    <i className="fas fa-clock"></i>
+    <span>운영시간: 평일 08:00~22:00 | 토요일 09:00~18:00 | 일요일 휴관</span>
+  </div>
+
+  <div className="info-row ai-row">
+    <i className="fas fa-robot"></i>
+    <span>
+      <strong>AI 보조 사서 안내:</strong> 음성 도서 검색 · 추천 · 좌석 안내 · 반납일 조회  
+      <span className="ai-tip-inline">“코스모스 어디 있어?” 라고 말해보세요!</span>
+    </span>
+  </div>
+
+</section>
+    </main>
+  </div>
+);
 };
 
 export default HomePage;

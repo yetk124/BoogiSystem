@@ -2,7 +2,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function useAndroidWS(androidUrl: string) {
+/**
+ * useAndroidWS 훅
+ * - 안드로이드에서 오는 intent(라벨)로 라우팅 이동
+ * - LLM에서 보내는 title:, mood:, borrower: 같은 메시지를 콜백으로 전달
+ */
+export default function useAndroidWS(
+    androidUrl: string,
+    onMessage?: (msg: string) => void   // 🔥 콜백 추가
+) {
     const wsRef = useRef<WebSocket | null>(null);
     const [connected, setConnected] = useState(false);
     const navigate = useNavigate();
@@ -28,27 +36,38 @@ export default function useAndroidWS(androidUrl: string) {
         ws.onmessage = (msg) => {
             console.log("FROM ANDROID RAW:", msg.data);
 
+            // 문자열이 아닐 경우 무시
+            if (typeof msg.data !== "string") return;
+
+            // title:소원 / mood:1 / borrower:2 같은 LLM 메시지 처리
+            if (msg.data.includes("title:") || msg.data.includes("mood:") || msg.data.includes("borrower:")) {
+                console.log("🔥 LLM INTENT:", msg.data);
+
+                // 프론트에서 전달받은 콜백으로 전달
+                if (onMessage) onMessage(msg.data.trim());
+                return;
+            }
+
+            // JSON 아닌 메시지 무시
+            if (!msg.data.trim().startsWith("{")) {
+                console.log("⚠ Non-JSON ignored:", msg.data);
+                return;
+            }
+
+            // JSON intent 처리 (maum0~maum7)
             try {
-                // 🔥 JSON 아닌 메시지는 건너뛰기
-                if (typeof msg.data !== "string" || !msg.data.trim().startsWith("{")) {
-                    console.log("⚠ Non-JSON message ignored:", msg.data);
-                    return;
-                }
-
                 const data = JSON.parse(msg.data);
-
-                // 🔥 maum0 ~ maum7 이 들어있는지 확인
                 if (typeof data.intent === "string") {
                     handleIntentNavigation(data.intent);
                 }
-
             } catch (e) {
-                console.log("JSON 파싱 오류:", e);
+                console.log("JSON parse error", e);
             }
         };
 
         return () => ws.close();
-    }, [androidUrl]);
+    }, [androidUrl, onMessage]);
+
 
     // intent → route 매핑
     const intentRouteMap: Record<string, string> = {

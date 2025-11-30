@@ -93,6 +93,7 @@
   margin: 0 auto;
   padding: 2rem 1rem;
   padding-bottom: 10px;
+    padding-top: 0.5rem;
 } */
 
 /* 기능 그리드 */
@@ -179,6 +180,8 @@
   border-radius: var(--border-radius);
   padding: 1.5rem;
   box-shadow: var(--shadow);
+  margin-top: -100px;
+  /* margin-top: -20px; */
   /* margin-bottom: 2rem; */
 }
 
@@ -374,4 +377,54 @@
   box-shadow: 0 2px 6px rgba(90, 70, 170, 0.12);
 
   pointer-events: none;
+}
+
+/* 전체 하단 1칸 (기능카드 2칸 폭과 동일) */
+.bottom-info {
+  grid-column: span 2;
+  width: 100%;
+  max-width: 760px;
+  margin: 1.5rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem; /* 더 촘촘하고 자연스럽게 */
+  margin-top: -20px;
+}
+
+/* 공지/운영/AI 카드 공통 스타일 — '작은 라인 형태' */
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  font-size: 0.92rem;
+  color: #333;
+
+  padding: 0.6rem 0.2rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+/* 마지막은 구분선 제거 */
+.info-row:last-child {
+  border-bottom: none;
+}
+
+/* 아이콘 */
+.info-row i {
+  color: #004ea1;
+  font-size: 1rem;
+}
+
+
+/* AI 안내 줄 */
+.ai-row strong {
+  color: #003c7a;
+  margin-right: 4px;
+}
+
+.ai-tip-inline {
+  display: inline-block;
+  margin-left: 4px;
+  color: #005fcc;
+  font-weight: 600;
 }
