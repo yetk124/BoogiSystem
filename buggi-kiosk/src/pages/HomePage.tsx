@@ -1,13 +1,13 @@
 // src/pages/HomePage.tsx
-import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
-
 import useAndroidWS from "../hooks/useAndroidWS";
+import React, { useState } from "react";
 
 import "../styles/Homepage.css";
 import "../styles/Header.css";
 import "../styles/common.css";
+
 
 const features = [
   {
@@ -69,14 +69,20 @@ const features = [
 ];
 
 const HomePage: React.FC = () => {
-  const { send } = useAndroidWS("ws://192.168.0.2:9000");
+  const { connected, send } = useAndroidWS("ws://192.168.0.2:9000");
 
-  // 마이크 버튼 → Android로 명령 전송
+  const [isListening, setIsListening] = useState(false);
+
   const handleMic = () => {
-    send({
-      type: "mic",
-      action: "start",
-    });
+    if (!connected) return;
+    send({ type: "mic", action: "start" });
+    setIsListening(true);
+  };
+
+  const handleStop = () => {
+    if (!connected) return;
+    send({ type: "mic", action: "stop" });
+    setIsListening(false);
   };
 
  return (
