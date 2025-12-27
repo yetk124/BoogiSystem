@@ -29,7 +29,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
 
-  
+
 }
 
 h1 {
@@ -49,7 +49,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #3431868a;
 }
 button:focus,
 button:focus-visible {
@@ -57,10 +57,10 @@ button:focus-visible {
 }
 
 @font-face {
-    font-family: 'Eommakkaturi';
-    src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_13@1.0/Katuri.woff') format('woff');
-    font-weight: normal;
-    font-display: swap;
+  font-family: 'Eommakkaturi';
+  src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_13@1.0/Katuri.woff') format('woff');
+  font-weight: normal;
+  font-display: swap;
 }
 
 @media (prefers-color-scheme: light) {

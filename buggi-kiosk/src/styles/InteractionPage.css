@@ -1,55 +1,278 @@
-/* src/styles/OpenCloseHoursPage.css */
-
-/* 상단 타이틀 영역 – 다른 페이지랑 폰트 사이즈 맞춤 */
+/* 상단 제목 */
 .openclose-header {
   text-align: center;
   margin: 1.5rem auto 0;
 }
 
 .openclose-header h1 {
-  font-size: 1.5rem;   /* BookSearch / Popular / ReturnDue 등과 동일 계열 */
+  margin-top: -0.9rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: #004ea1;
 }
 
 .openclose-header p {
-  margin-top: 0.5rem;
-  margin-bottom: 1.0rem;
+  margin-top: 0.4rem;
   font-size: 1rem;
   color: #6b7280;
 }
 
-/* 학기 중 / 방학 중 토글 버튼 줄 */
-.period-toggle {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
+/* -----------------------------------
+   학기 중 운영시간 큰 카드
+----------------------------------- */
+.hours-card {
+  margin: 2rem auto 1.5rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 650px;
+
+  background: linear-gradient(135deg, #0b63c7, #004ea1);
+  color: white;
+
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 78, 161, 0.25);
+
+  animation: fadeIn 0.4s ease-out;
 }
 
-.period-btn {
-  min-width: 120px;
-  padding: 0.6rem 1.4rem;
-  border-radius: 999px;
-  border: 1px solid #d1d5db;
-  background: #f9fafb;
-  color: #374151;
-  font-size: 0.95rem;
+.hours-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.hours-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.hours-time {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-top: 0.2rem;
+}
+
+/* -----------------------------------
+   휴무일 안내
+----------------------------------- */
+.holiday-section {
+  margin-top: 2rem;
+}
+
+.holiday-title {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #004ea1;
+  margin-bottom: 1.2rem;
+}
+
+.holiday-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 0 0.5rem;
+}
+
+.holiday-card {
+  background: white;
+  border-radius: 18px;
+  padding: 1rem 1.2rem;
+
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+
+  text-align: center;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.holiday-date {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.holiday-name {
+  margin-top: 0.3rem;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* 공통 페이드인 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* -----------------------------
+   🔵 현재 시간 카드
+----------------------------- */
+.current-time-card {
+  margin: 1.4rem auto;
+  padding: 1.3rem;
+  width: 100%;
+  max-width: 650px;
+  background: white;
+  border-radius: 18px;
+  text-align: center;
+
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.current-time-title {
+  font-size: 1.0rem;
+  font-weight: 700;
+  color: #004ea1;
+  margin-bottom: 0.4rem;
+}
+
+.current-time {
+  font-size: 1.0rem;
+  color: #1f2937;
   font-weight: 600;
-  cursor: pointer;
-  transition: all 0.18s ease;
 }
 
-.period-btn:hover {
-  background: #ffffff;
-  border-color: #93c5fd;
+/* -----------------------------
+   🔵 휴무일 달력 2 × 2 스타일
+----------------------------- */
+.holiday-grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  padding: 0 1rem;
+  max-width: 650px;
+  margin: 0 auto;
 }
 
-/* 선택된 상태 */
-.period-btn.active {
-  background: #004ea1;
-  border-color: #004ea1;
-  color: #ffffff;
-  box-shadow: 0 8px 20px rgba(0, 78, 161, 0.35);
+.holiday-calendar-card {
+  background: white;
+  border-radius: 20px;
+  padding: 1.1rem 1rem;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+}
+
+.holiday-date-box {
+  font-size: 1.1em;
+  font-weight: 800;
+  color: #004ea1;
+  background: #e9f2ff;
+  border-radius: 10px;
+}
+
+
+.holiday-name-box {
+  font-size: 1rem;
+  margin-top: 0.4rem;
+  color: #374151;
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.holiday-calendar-card {
+  animation: slideFadeIn 0.45s ease-out;
+}
+
+.current-time-card {
+  animation: slideFadeIn 0.45s ease-out;
+}
+
+/* 유리 느낌 추가 */
+.holiday-calendar-card {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.65);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.holiday-calendar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+/* 휴무일 카드: 반투명 이미지 배경 스타일 */
+.holiday-calendar-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid #e5e7eb;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* 배경 이미지 넣기 */
+.holiday-calendar-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.22;  /* <-- 반투명 정도 */
+  filter: blur(2px); /* <-- 은은한 흐림 */
+  z-index: 1;
+}
+
+/* 어두운 반투명 오버레이 (글자 가독성 ↑) */
+.holiday-calendar-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15); /* 살짝 어둡게 */
+  z-index: 1;
+}
+
+/* 텍스트는 최상단 */
+.holiday-date-box,
+.holiday-name-box {
+  position: relative;
+  z-index: 2;
+  color: #fff; /* 이미지 위에 올 것이므로 흰색 추천 */
+}
+
+.holiday-calendar-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  text-align: center;
+  padding: 1rem;
+}
+
+.holiday-calendar-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg-img);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.52;
+  filter: blur(2px);
+  z-index: 1;
+}
+
+.holiday-calendar-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+.holiday-date-box,
+.holiday-name-box {
+  position: relative;
+  z-index: 2;
+  color: rgb(0, 0, 0);
 }

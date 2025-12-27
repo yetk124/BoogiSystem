@@ -10,7 +10,7 @@ import java.util.Map;
 @Component
 public class OpenAiLlmClient implements LlmClient {
 
-    @Value("${openai.api.key}")
+   // c@Value("${openai.api.key}")
     private String apiKey;
 
     private final RestTemplate rest = new RestTemplate();

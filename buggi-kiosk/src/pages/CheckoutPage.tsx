@@ -1,144 +1,68 @@
 // src/pages/CheckoutPage.tsx
-import React, { useState } from "react";
-import "../styles/common.css";          // buggi-root, main-content
-import "../styles/BookSearchPage.css";  // 검색바 공용 스타일
-import "../styles/CheckoutPage.css";    // 퇴실 처리 전용 스타일
+import React, { useEffect, useState } from "react";
+import "../styles/common.css";
+import "../styles/CheckoutPage.css";
 
 import Header from "../components/Header";
-import MicButton from "../components/MicButton";
 
-/** 나중에 API 응답 형태를 위해 타입 정의 */
-type CheckoutResponse = {
-  message: string; // ex) "퇴실 처리를 완료했습니다"
-};
-
-/**
- * 🔹 퇴실 처리 API 래퍼
- * 지금은 setTimeout + 더미값이지만,
- * 나중에는 이 함수 안만 fetch/axios 코드로 교체하면 됨.
- */
-async function requestCheckout(_query: string): Promise<CheckoutResponse> {
-  // TODO: 실제 LLM/백엔드 연동 시 여기 교체
-  // const res = await fetch("/api/studyroom/checkout", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({ query: _query }),
-  // });
-  // const data = await res.json();
-  // return { message: data.message };
-
+async function requestCheckout(): Promise<{ message: string }> {
   return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({ message: "퇴실 처리를 완료했습니다." });
-    }, 700);
+    setTimeout(() => resolve({ message: "퇴실 처리가 완료되었습니다." }), 3000);
   });
 }
 
 const CheckoutPage: React.FC = () => {
-  const [query, setQuery] = useState("");
-  const [status, setStatus] = useState<
-    "idle" | "listening" | "thinking" | "speaking"
-  >("idle");
-  const [result, setResult] = useState<CheckoutResponse | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [done, setDone] = useState(false);
+  const [result, setResult] = useState<{ message: string } | null>(null);
 
-  /** 🟦 퇴실 요청 버튼 */
-  const handleCheckout = async () => {
-    if (!query.trim()) return;
-
-    setStatus("thinking");
-    setResult(null);
-
-    try {
-      const data = await requestCheckout(query);
+  // 페이지 들어오면 자동으로 처리 시작
+  useEffect(() => {
+    const startProcess = async () => {
+      const data = await requestCheckout();
       setResult(data);
+      setLoading(false);
+      setDone(true);
 
-      setStatus("speaking");
-      setTimeout(() => setStatus("idle"), 700);
-    } catch (e) {
-      console.error(e);
-      setResult({
-        message: "퇴실 처리를 진행하지 못했습니다. 잠시 후 다시 시도해주세요.",
-      });
-      setStatus("idle");
-    }
-  };
+      // 완료 후 2초 뒤 홈으로 이동
+      setTimeout(() => {
+        window.location.href = "/home";
+      }, 2000);
+    };
 
-  /** 🎙 Mic 버튼 (나중에 STT 붙이면 여기서 query 채우고 handleCheckout 호출) */
-  const handleMic = () => {
-    setStatus((prev) => (prev === "listening" ? "idle" : "listening"));
-
-    // TODO: STT 완성되면:
-    // setQuery(sttText);
-    // await handleCheckout();
-  };
+    startProcess();
+  }, []);
 
   return (
-    <div className="buggi-root">
+    <div className="buggi-root checkout-page">
       <Header />
 
       <main className="main-content">
-        {/* 상단 제목 영역 */}
+
+        {/* 상단 안내 */}
         <section className="checkout-header">
-          <h1>🚪 퇴실 처리</h1>
-          <p>집중열람실 이용 후, 간편하게 퇴실을 요청해 주세요.</p>
+          <h1>🚪 퇴실 처리 중…</h1>
+          <p>잠시만 기다려 주세요.</p>
         </section>
 
-        {/* 검색 입력 + 버튼 + 마이크 (다른 페이지와 동일 패턴) */}
-        <section className="search-panel">
-          <div className="search-box-card">
-            <div className="search-input-row">
-              <div className="search-input-wrapper">
-                <span className="search-input-icon">🚪</span>
-                <input
-                  type="text"
-                  placeholder='예: "퇴실 처리해줘"'
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  className="search-text-input"
-                />
-              </div>
-
-              <button
-                type="button"
-                onClick={handleCheckout}
-                className="search-button"
-              >
-                퇴실 요청
-              </button>
-
-              <div className="mic-wrapper">
-                <MicButton
-                  status={status}
-                  onClick={handleMic}
-                  label="음성 입력"
-                />
-              </div>
+        {/* ⏳ 로딩 화면 */}
+        {loading && (
+          <section className="checkout-inline-result">
+            <div className="checkout-inline-box">
+              <div className="loading-book" />
+              <p className="loading-text">퇴실 요청을 처리하고 있어요…</p>
+              <p className="auto-move-text">약 3초 정도 소요됩니다.</p>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
-        {/* ✅ 결과가 생겼을 때만 퇴실 완료 카드 표시 */}
-        {result && (
-          <section className="checkout-result-section">
-            <div className="checkout-card">
-              <div className="checkout-icon-wrapper">
-                <div className="checkout-icon-circle">
-                  <span className="checkout-icon">✓</span>
-                </div>
-              </div>
-
-              <h2 className="checkout-main-text">{result.message}</h2>
-              <p className="checkout-sub-text">
-                이용해 주셔서 감사합니다. 오늘도 안전한 귀가 되세요.
-              </p>
-
-              <button
-                type="button"
-                className="checkout-ok-button"
-                onClick={() => setResult(null)}
-              >
-                확인
-              </button>
+        {/* ✓ 완료 화면 */}
+        {done && result && (
+          <section className="checkout-inline-result">
+            <div className="checkout-inline-box">
+              <div className="inline-check">✓</div>
+              <p className="inline-main">{result.message}</p>
+              <p className="inline-sub">잠시 후 홈으로 이동합니다…</p>
             </div>
           </section>
         )}

@@ -1,3 +1,7 @@
+/* --------------------------
+   Glass Book Card
+-------------------------- */
+
 /* 상단 타이틀 영역 */
 .popular-header {
   text-align: center;
@@ -5,138 +9,81 @@
 }
 
 .popular-header h1 {
-  font-size: 1.5rem;  
+  font-size: 1.5rem;
   font-weight: 700;
-  color: #004ea1;
+  color: #004ea1; /* 부기 시스템의 대표 블루 컬러 */
 }
 
 .popular-header p {
   margin-top: 0.5rem;
-  margin-bottom: 1.0rem;
-  font-size: 1.0rem;
-  color: #6c757d;
-}
-
-/* 검색바와 카드 사이 여백 조정 */
-.popular-search-panel {
-  margin-bottom: 2rem;
-}
-
-
-/* 카드 그리드 */
-.popular-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
-}
-
-/* 개별 카드 */
-.popular-card {
-  background: #ffffff;
-  border-radius: 24px;
-  padding: 1.8rem 2rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  color: #1f2933;
-
-  display: flex;
-  flex-direction: column;
-}
-
-.popular-title {
-  margin-top: 1.2rem;
-  font-size: 1.6rem;
-  font-weight: 700;
-}
-
-.popular-author {
-  margin-top: 0.4rem;
+  margin-bottom: 1rem;
   font-size: 1rem;
-  color: var(--text-muted);
+  color: #6b7280; /* 고급스러운 회색 톤 */
 }
 
-/* 카드 하단 버튼 영역 */
-.popular-actions {
-  margin-top: auto;
-  padding-top: 2rem;
-  display: flex;
-  gap: 0.75rem;
+.fancy-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(18px);
+  border-radius: 28px;
+  padding: 2.5rem 2rem 3rem;
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.05),
+    0 20px 40px rgba(0,80,160,0.12),
+    inset 0 0 0 1px rgba(255,255,255,0.45);
+
+  text-align: center;
+  animation: fadeSlideUp 0.6s ease-out;
 }
 
-/* 버튼 공통 */
-.popular-actions button {
-  flex: 1;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 18px;
-  padding: 0.75rem 0;
-  cursor: pointer;
-  transition: all 0.2s ease;
+/* Book cover */
+.book-cover-wrapper {
+  position: relative;
+  width: 230px;
+  height: 300px;
+  margin: 0 auto 1.2rem;
 }
 
-/* 아웃라인 버튼 */
-.btn-outline {
-  border: 2px solid var(--primary-color);
-  background: #ffffff;
-  color: var(--primary-color);
-}
-
-.btn-outline:hover {
-  background: var(--primary-color);
-  color: #ffffff;
-  transform: translateY(-1px);
-}
-
-/* 기본 파란 버튼 */
-.btn-primary {
-  border: 2px solid var(--primary-color);
-  background: var(--primary-color);
-  color: #ffffff;
-  box-shadow: 0 6px 18px rgba(0, 78, 161, 0.3);
-}
-
-.btn-primary:hover {
-  background: #ffffff;
-  color: var(--primary-color);
-  transform: translateY(-1px);
-}
-
-
-
-/* swiper 코드 */
-/* 인기 도서 카드 */
-.popular-swiper {
+.book-cover {
   width: 100%;
-  max-width: 900px;
-  margin: 2rem auto;
-  padding-bottom: 40px;
+  height: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow:
+    0 6px 15px rgba(0,0,0,0.12),
+    0 12px 24px rgba(0,80,160,0.12);
 }
 
-.popular-card {
-  background: #ffffff;
-  padding: 2rem;
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.popular-rank {
-  font-size: 3rem;
-  font-weight: 900;
-  color: #004ea1;
-}
-
-.popular-title {
-  margin-top: 1rem;
-  font-size: 2rem;
+/* Rank Badge */
+.rank-badge {
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #004ea1;
+  color: #ffffff;
+  padding: 0.4rem 1rem;
+  border-radius: 12px;
+  font-size: 1rem;
   font-weight: 700;
-  color: #1f2937;
+  box-shadow: 0 6px 12px rgba(0,78,161,0.3);
 }
 
+/* Title */
+.popular-title {
+  margin-top: 2rem;
+  font-size: 1.8rem !important;
+  font-weight: 800;
+  color: #1f2d3d;
+}
+
+/* Author */
 .popular-author {
-  margin-top: 0.5rem;
-  font-size: 1.3rem;
-  color: #6b7280;
+  margin-top: 0.3rem;
+  font-size: 1.2rem !important;
+  color: #66758a;
 }
 
+/* Buttons */
 .popular-actions {
   margin-top: 2rem;
   display: flex;
@@ -146,38 +93,82 @@
 .btn-outline,
 .btn-primary {
   flex: 1;
-  padding: 0.8rem 1rem;
+  padding: 0.9rem 1rem;
   border-radius: 18px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* --------------------------
+   Modal
+-------------------------- */
+.modal-bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9000;
+}
+
+.modal-box {
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 24px;
+  width: 420px;
+  text-align: center;
+  box-shadow: 0 16px 32px rgba(0,0,0,0.12);
+  animation: fadeSlideUp 0.3s ease;
+}
+
+.modal-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #1f2d3d;
+}
+
+.modal-content {
   font-size: 1.2rem;
-  font-weight: 600;
+  padding: 0.8rem 0;
 }
 
-/* Swiper 전용 버튼 */
-.swiper-button-prev,
-.swiper-button-next {
-  color: #32363a !important;
-  scale: 0.6;
-  font-weight: bold;
+.modal-info {
+  font-size: 1.1rem;
+  margin: 0.4rem 0;
 }
 
-.swiper-pagination-bullet {
-  background: #b1c8f0 !important;
+.modal-close {
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.4rem;
+  background: #004ea1;
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
 }
 
-.swiper-pagination-bullet-active {
-  background: #004ea1 !important;
+/* 자세히 보기 이미지 */
+.detail-modal {
+  width: 500px;
 }
 
-
-/* width가 좁아졌을 때 1열 또는 2열로 바꾸고 싶다면 */
-@media (max-width: 1024px) {
-  .popular-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.detail-img {
+  width: 200px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
 }
 
-@media (max-width: 768px) {
-  .popular-grid {
-    grid-template-columns: 1fr;
-  }
+/* Animation */
+@keyframes fadeSlideUp {
+  0% {opacity: 0; transform: translateY(14px);}
+  100% {opacity: 1; transform: translateY(0);}
 }

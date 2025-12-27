@@ -21,7 +21,6 @@
 
 /* 결과 카드 섹션 */
 .security-result-section {
-  margin-top: 2rem;
   display: flex;
   justify-content: center;
 }
@@ -29,7 +28,8 @@
 /* 메인 카드 */
 .security-card {
   width: 100%;
-  max-width: 720px;
+  max-width: 720/x;
+  min-height: 360px;
   padding: 2.5rem 2.5rem 2.75rem;
   border-radius: 24px;
   background: #ffffff;
@@ -38,6 +38,9 @@
   position: relative;
   overflow: hidden;
   border: 2px solid transparent;
+  display: flex;  
+  flex-direction: column;
+  justify-content: center; /* 내부 요소 세로 중앙 정렬 */
 }
 
 /* 활성 상태 시 붉은 포커스 + 펄스 효과 */
@@ -169,3 +172,44 @@
   background: #ffffff;
   color: #ef4444;
 }
+
+/* 🔵 추가: 키오스크용 큰 빨간 버튼 */
+.security-btn.danger-big {
+  background: #dc2626;   /* 선명한 빨강 */
+  color: white;
+  min-width: 140px;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.security-extra-info {
+  margin-top: 2rem;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+.boogi-walk-section {
+  margin-top: 2.5rem;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+.boogi-walk {
+  width: 70px;
+  position: absolute;
+  left: -120px;
+  animation: boogi-walk-move 8s linear infinite;
+  opacity: 0.95;
+}
+
+@keyframes boogi-walk-move {
+  0% { left: -120px; }
+  100% { left: calc(100% + 120px); }
+}
+

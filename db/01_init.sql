@@ -18,33 +18,6 @@ USE `buggi`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `books`
---
-
-DROP TABLE IF EXISTS `books`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `books` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `author` varchar(100) NOT NULL,
-  `borrow_count` int DEFAULT NULL,
-  `location_code` varchar(50) DEFAULT NULL,
-  `title` varchar(200) NOT NULL,
-  `location` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `books`
---
-
-LOCK TABLES `books` WRITE;
-/*!40000 ALTER TABLE `books` DISABLE KEYS */;
-/*!40000 ALTER TABLE `books` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `calendar`
 --
 
@@ -107,12 +80,13 @@ DROP TABLE IF EXISTS `loan`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `loan` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `student_id` int NOT NULL,
-  `due_date` date NOT NULL,
+  `student_id` varchar(255) DEFAULT NULL,
+  `student_name` varchar(255) DEFAULT NULL,
+  `due_date` date DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `student_id` (`student_id`),
-  CONSTRAINT `loan_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `users` (`student_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `student_id` (`student_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,8 +95,61 @@ CREATE TABLE `loan` (
 
 LOCK TABLES `loan` WRITE;
 /*!40000 ALTER TABLE `loan` DISABLE KEYS */;
-INSERT INTO `loan` VALUES (1,2112345,'2024-09-03'),(2,2067890,'2024-10-03'),(3,2254321,'2024-09-25');
+INSERT INTO `loan` VALUES (1,'2112345','고길동','2025-12-10','문장작법과 의사소통'),(2,'2067890','박정자','2025-12-12','한국사회보장개혁론'),(3,'2254321','도우너','2025-12-14','과학문명사'),(4,'2112345','고길동','2025-12-16','프랑스 민담'),(5,'2067890','박정자','2025-12-18','한국고전비평'),(6,'2254321','도우너','2025-12-20','객체모델링 방법론');
 /*!40000 ALTER TABLE `loan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mood`
+--
+
+DROP TABLE IF EXISTS `mood`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `mood` (
+  `id` int NOT NULL,
+  `mood_name` varchar(255) DEFAULT NULL,
+  `author` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mood`
+--
+
+LOCK TABLES `mood` WRITE;
+/*!40000 ALTER TABLE `mood` DISABLE KEYS */;
+INSERT INTO `mood` VALUES (1,'위로','톤 텔레헨','고슴도치의 소원'),(2,'동기부여','최재천','최재천의 공부'),(3,'휴식','장석훈','생각의 말');
+/*!40000 ALTER TABLE `mood` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `popular`
+--
+
+DROP TABLE IF EXISTS `popular`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `popular` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `author` varchar(255) DEFAULT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `call_number` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `popular`
+--
+
+LOCK TABLES `popular` WRITE;
+/*!40000 ALTER TABLE `popular` DISABLE KEYS */;
+INSERT INTO `popular` VALUES (1,'마음가는대로','수산나 타마로','어문학자료실(3F)','883.7 ㅌ18ㅁ'),(2,'코스모스','칼 세이건','인문자연과학자료실(5F)','440 ㅅ386ㅋ'),(3,'아리랑','김산','사회과학자료실(4F)','340.99 ㄱ755ㅇ c.3');
+/*!40000 ALTER TABLE `popular` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -159,4 +186,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-11-19 18:35:20
+-- Dump completed on 2025-11-27  9:08:14

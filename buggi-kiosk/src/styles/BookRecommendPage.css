@@ -1,3 +1,4 @@
+/* BookRecommendPage.css */
 /* 상단 타이틀 영역 */
 .recommend-header {
   text-align: center;
@@ -41,17 +42,81 @@
 .result-title {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #111;
+  color: #00448f;
+
 }
 
 .result-author {
   margin-top: 0.5rem;
-  font-size: 1.1rem;
-  color: #555;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #001377;
 }
 
 .result-message {
   margin-top: 1rem;
   font-size: 1rem;
   color: #333;
+}
+
+.mood-button-wrapper{
+  display: flex;
+  gap: 0.6rem; /* 버튼 간격 */
+  justify-content: center; /* 가운데 정렬 */
+  flex-wrap: nowrap; /* 화면 좁을 때 자동 줄바꿈 */
+}
+
+.recommend-button-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: nowrap; /* 👉 한 줄 유지 */
+  overflow-x: auto;  /* 👉 화면 좁을 때 스크롤 */
+  white-space: nowrap;
+}
+
+
+.mood-button {
+  width: 130px;
+  height: 100%;
+  border-radius: 18px;
+  border: none;
+  font-size: 1.0rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #004ea1;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-box{
+  padding: 50px;
+  border: 1px solid black;
+  border-radius: 30px;
+  color: black;
+  font-size: 1.3rem;
+}
+
+.comment{
+  margin: 40px;
+  //border: 1px solid #1a1a1a;
+  border-radius: 30px;
+  padding: 50px;
+  text-align: left;
+  background: #dae0f0;
+}
+
+.result-header-box {
+  display: flex;
+  align-items: center;       /* 세로 중앙 정렬 */
+  justify-content: center;   /* 전체 가운데 정렬 */
+}
+
+.result-header-box img {
+  width: 200px; /* 원하는 크기 */
+  height: auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }

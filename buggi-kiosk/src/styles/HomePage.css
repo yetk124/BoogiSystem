@@ -51,6 +51,47 @@
   background: white;
 }
 
+.stop-record-btn {
+  position: fixed;
+  left: 850px;
+  top: 16px;
+
+  width: 55px;
+  height: 55px;
+  aspect-ratio: 1 / 1;
+
+  background-color: #ff3b30; /* 빨간 원 */
+  border-radius: 50%;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 !important;
+  box-sizing: border-box;
+
+  cursor: pointer;
+  z-index: 999;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* STOP 정사각형 아이콘 */
+.stop-icon {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 4px; /* 살짝 둥근 네모 */
+}
+
+
+.stop-record-btn:hover {
+  background-color: #e13229;
+  transform: scale(1.05);
+  transition: 0.1s ease-in-out;
+}
+
 .search-input:focus {
   outline: none;
   border-color: var(--primary-color);
@@ -93,6 +134,7 @@
   margin: 0 auto;
   padding: 2rem 1rem;
   padding-bottom: 10px;
+    padding-top: 0.5rem;
 } */
 
 /* 기능 그리드 */
@@ -179,6 +221,8 @@
   border-radius: var(--border-radius);
   padding: 1.5rem;
   box-shadow: var(--shadow);
+  margin-top: -100px;
+  /* margin-top: -20px; */
   /* margin-bottom: 2rem; */
 }
 
@@ -333,4 +377,95 @@
   .feature-card {
     border: 2px solid #000;
   }
+}
+
+/* 보안 호출 카드 (빨간 강조) */
+.feature-card.security-alert {
+  border-left: 4px solid #dc3545;
+  /* background: rgba(255, 235, 238, 0.9); */
+}
+
+.feature-card.security-alert .feature-icon {
+  background: linear-gradient(135deg, #dc3545, #ff6b6b);
+}
+
+/* 자주 사용하는 기능 카드 (파란 강조) */
+.feature-card.frequent {
+  border-left: 4px solid #7053b2;
+  /* background: rgba(186, 162, 179, 0.9); */
+}
+
+.feature-card.frequent .feature-icon {
+  background: linear-gradient(135deg, #553c91, #8f72d3);
+}
+/* 🔮 부기 UI 스타일의 추천 배지 */
+.top-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  color: #5b4abf; /* 차분한 보라 */
+  background: rgba(232, 229, 255, 0.8); /* 부드러운 라벤더톤 */
+  border: 1px solid rgba(130, 122, 200, 0.25);
+
+  border-radius: 10px;
+  backdrop-filter: blur(2px);
+
+  box-shadow: 0 2px 6px rgba(90, 70, 170, 0.12);
+
+  pointer-events: none;
+}
+
+/* 전체 하단 1칸 (기능카드 2칸 폭과 동일) */
+.bottom-info {
+  grid-column: span 2;
+  width: 100%;
+  max-width: 760px;
+  margin: 1.5rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem; /* 더 촘촘하고 자연스럽게 */
+  margin-top: -20px;
+}
+
+/* 공지/운영/AI 카드 공통 스타일 — '작은 라인 형태' */
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  font-size: 0.92rem;
+  color: #333;
+
+  padding: 0.6rem 0.2rem;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+/* 마지막은 구분선 제거 */
+.info-row:last-child {
+  border-bottom: none;
+}
+
+/* 아이콘 */
+.info-row i {
+  color: #004ea1;
+  font-size: 1rem;
+}
+
+
+/* AI 안내 줄 */
+.ai-row strong {
+  color: #003c7a;
+  margin-right: 4px;
+}
+
+.ai-tip-inline {
+  display: inline-block;
+  margin-left: 4px;
+  color: #005fcc;
+  font-weight: 600;
 }

@@ -1,21 +1,26 @@
 package com.buggi.backend.service;
 
+import com.buggi.backend.domain.Book;
 import com.buggi.backend.dto.BoogiResponse;
+import com.buggi.backend.dto.BookDtos;
+import com.buggi.backend.repository.BookRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class BookService {
 
-    public BoogiResponse searchBooks(Map<String, Object> args) {
-        String keyword = (String) args.get("keyword");
+    private final BookRepository bookRepository;
 
-        // TODO: DB 검색 로직 작성
-        return new BoogiResponse(
-                "1",
-                args,
-                keyword + " 관련 책을 찾아드렸어요."
-        );
+    public List<BookDtos.BookResponse> searchBooks(String keyword) {
+        List<Book> books = bookRepository.findByTitleContaining(keyword);
+
+        return books.stream()
+                .map(BookDtos.BookResponse::from)
+                .toList();
     }
 }

@@ -9,6 +9,7 @@
   padding: 1rem 0;
 }
 
+/* 데스크탑 */
 .header-content {
   max-width: 1200px;
   height: 60px;
@@ -17,6 +18,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
+}
+
+/* 왼쪽 로고 */
+.logo-with-mic {
+  display: flex;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -33,65 +41,66 @@
   font-size: 1.5rem;
 }
 
-
-.login-btn-header {
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: var(--border-radius);
-  background: linear-gradient(135deg, var(--primary-color), #2422708a);
-  color: white;
-  cursor: pointer;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.login-btn-header:hover {
-  background: linear-gradient(135deg, #2422708a, #2422708a);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 78, 161, 0.3);
-}
-
-/* 오른쪽 액션 버튼 영역 */
+/* 오른쪽 버튼 영역 */
 .header-actions {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 
-/* 버튼 디자인 */
-.header-btn {
+/* 공통 버튼 스타일 */
+.header-btn,
+.mic-btn-header {
   background: white;
   border: 2px solid #2422708a;
   color: #2422708a;
-  padding: 0.4rem 0.7rem;
+  width: 42px;
+  height: 42px;
   border-radius: 10px;
   font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.header-btn:hover {
+.header-btn:hover,
+.mic-btn-header:hover {
   background: #2422708a;
   color: white;
   transform: translateY(-2px);
 }
 
-
+/* ============================
+   📱  모바일 반응형 강화 (<=768px)
+   ============================ */
 @media (max-width: 768px) {
   .header-content {
-    flex-direction: column;
+    flex-direction: column;  /* 위아래로 정렬 */
+    height: auto;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  /* 로고 중앙 정렬 */
+  .logo-with-mic {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* 버튼 영역 중앙 정렬 */
+  .header-actions {
+    width: 100%;
+    justify-content: center;   /* 버튼 중앙 배치 */
     gap: 1rem;
   }
 
-  .login-btn-header {
-    order: -1;
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 0.5rem;
+  /* 버튼 조금 더 크게 */
+  .header-btn,
+  .mic-btn-header {
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
   }
 }

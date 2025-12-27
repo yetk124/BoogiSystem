@@ -99,7 +99,7 @@
 
 /* 검색 버튼 */
 .search-button {
-  width: 100%;
+  width: 109px;
   height: 100%;
   border-radius: 18px;
   border: none;
@@ -160,6 +160,9 @@
   font-weight: 600;
   color: #6c757d;
 }
+.center {
+  text-align: center;
+}
 
 .result-main {
   margin-top: 1rem;
@@ -169,7 +172,143 @@
 }
 
 .result-sub {
-  margin-top: 0.5rem;
+  margin-top: 3rem;
   font-size: 1.0rem;
   color: #004ea1;
+}
+
+.search-item{
+  margin-top: 20px;
+  margin-bottom: 20px; /* 원하는 만큼 */
+  /*background: #d9dde8;*/
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+
+}
+
+.item-row {
+  display: flex;
+  flex-direction: column; /* 세로 정렬 */
+  align-items: center; /* 가운데 정렬 */
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.item-conent{
+  font-size: 1.0rem;
+  font-weight: bold;
+}
+
+.result-item-label {
+  display: inline-block;
+
+  background: #004ea1;
+  color: #ffffff;
+
+  font-size: 1.0rem;
+  font-weight: bold;
+
+  padding: 0.35rem 1.1rem;       /* 위/아래, 좌/우 패딩 */
+  border-radius: 999px;          /* pill 형태 */
+  margin-top: 0.5rem;
+  margin-bottom: 0.4rem;         /* 아래 간격 */
+  text-align: center;
+}
+
+.no-result-box {
+  background: #f2f4f8;
+  padding: 1.8rem 1rem;
+  border-radius: 16px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.no-result-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.no-result-sub {
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+/* =============================
+   📚 도서 없음 - 부기 캐릭터 스타일 패널
+   ============================= */
+
+.no-result-panel {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 24px;
+  padding: 2.2rem 1.7rem;
+  margin-top: 1.5rem;
+
+  /* box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.05),
+    0 18px 42px rgba(0, 80, 160, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.45); */
+
+  animation: fadeSlideUp 0.6s ease-out;
+  text-align: center;
+}
+
+/* 🔵 도서관 캐릭터 아이콘 크기 조정 */
+.no-result-icon-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin: 0 auto 1rem;
+  animation: iconPop 0.55s ease-out;
+}
+
+/* 제목 */
+.no-result-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #1f2d3d;
+  margin-bottom: 0.45rem;
+}
+
+/* 설명 */
+.no-result-sub {
+  font-size: 1rem;
+  color: #5f6c7b;
+  margin-bottom: 0.7rem;
+}
+
+/* 힌트 */
+.no-result-hint {
+  font-size: 0.9rem;
+  color: #7c8794;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+/* =============================
+   ✨ 애니메이션
+   ============================= */
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes iconPop {
+  0% { transform: scale(0.4); opacity: 0; }
+  60% { transform: scale(1.17); opacity: 1; }
+  100% { transform: scale(1); }
 }
